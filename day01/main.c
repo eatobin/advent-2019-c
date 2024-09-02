@@ -38,7 +38,7 @@ int main(void) {
         tot_fuel += fuelValue(mass);
     }
 
-    printf("Part a: %i\n", tot_fuel); // 3337766
+    printf("Part a: %i\n", tot_fuel);// 3337766
 
     rewind(fp);
 
@@ -47,7 +47,7 @@ int main(void) {
         tot_fuel_rec += recFuelValue(mass);
     }
 
-    printf("Part b: %i\n\n", tot_fuel_rec); // 5003788
+    printf("Part b: %i\n\n", tot_fuel_rec);// 5003788
 
     free(line);
     fclose(fp);
