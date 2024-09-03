@@ -123,7 +123,12 @@ int opcode(struct Intcode *intcode) {
     return 0;
 }
 
-int main() {
+void updated_memory(struct Intcode *intcode, int noun, int verb) {
+    intcode->memory.contents[1] = noun;
+    intcode->memory.contents[2] = verb;
+}
+
+int main(void) {
     struct Memory memory;
     struct Intcode intcode;
 
@@ -132,8 +137,7 @@ int main() {
     intcode.memory = memory;
     int ic_return = 1;
 
-    intcode.memory.contents[1] = 12;
-    intcode.memory.contents[2] = 2;
+    updated_memory(&intcode, 12, 2);
 
     while (ic_return == 1) {
         ic_return = opcode(&intcode);
