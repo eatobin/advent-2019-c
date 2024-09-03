@@ -98,26 +98,27 @@ int opcode(struct Intcode *intcode) {
     int address3;
 
     action = intcode->memory.contents[intcode->pointer];
-    while (action != 99) {
-        address1 = intcode->memory.contents[intcode->pointer + 1];
-        address2 = intcode->memory.contents[intcode->pointer + 2];
-        address3 = intcode->memory.contents[intcode->pointer + 3];
-        switch (action) {
-            case 1:
-                intcode->memory.contents[address3] =
-                        intcode->memory.contents[address1] +
-                        intcode->memory.contents[address2];
-                intcode->pointer += 4;
-                action = intcode->memory.contents[intcode->pointer];
-                break;
-            case 2:
-                intcode->memory.contents[address3] =
-                        intcode->memory.contents[address1] *
-                        intcode->memory.contents[address2];
-                intcode->pointer += 4;
-                action = intcode->memory.contents[intcode->pointer];
-                break;
-        }
+    address1 = intcode->memory.contents[intcode->pointer + 1];
+    address2 = intcode->memory.contents[intcode->pointer + 2];
+    address3 = intcode->memory.contents[intcode->pointer + 3];
+
+    switch (action) {
+        case 1:
+            intcode->memory.contents[address3] =
+                    intcode->memory.contents[address1] +
+                    intcode->memory.contents[address2];
+            intcode->pointer += 4;
+            action = intcode->memory.contents[intcode->pointer];
+            return 1;
+        case 2:
+            intcode->memory.contents[address3] =
+                    intcode->memory.contents[address1] *
+                    intcode->memory.contents[address2];
+            intcode->pointer += 4;
+            action = intcode->memory.contents[intcode->pointer];
+            return 1;
+        case 9:
+            return 0;
     }
     return 0;
 }
@@ -129,11 +130,14 @@ int main() {
     memory = return_memory("day02.csv");
     intcode.pointer = 0;
     intcode.memory = memory;
+    int ic_return = 1;
 
     intcode.memory.contents[1] = 12;
     intcode.memory.contents[2] = 2;
 
-    opcode(&intcode);
+    while (ic_return == 1) {
+        ic_return = opcode(&intcode);
+    }
 
     printf("Memory length: %d\n\n", intcode.memory.length);
 
