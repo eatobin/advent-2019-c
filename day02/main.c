@@ -117,8 +117,6 @@ int opcode(struct Intcode *intcode) {
             intcode->pointer += 4;
             action = intcode->memory.contents[intcode->pointer];
             return 1;
-        case 9:
-            return 0;
     }
     return 0;
 }
