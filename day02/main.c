@@ -126,6 +126,36 @@ void updated_memory(struct Intcode *intcode, int noun, int verb) {
     intcode->memory.contents[2] = verb;
 }
 
+int noun_verb(void) {
+    int noun;
+    int verb;
+    struct Memory memory;
+    struct Intcode intcode;
+    int ic_return;
+    int candidate;
+
+    for (noun = 0; noun < 100; noun++) {
+        for (verb = 0; verb < 100; verb++) {
+            memory = return_memory("day02.csv");
+            intcode.pointer = 0;
+            intcode.memory = memory;
+            updated_memory(&intcode, noun, verb);
+
+            ic_return = 1;
+            while (ic_return == 1) {
+                ic_return = opcode(&intcode);
+            }
+
+            candidate = intcode.memory.contents[0];
+            if (candidate == 19690720) {
+                goto end;
+            }
+        }
+    }
+end:
+    return (100 * noun) + verb;
+}
+
 int main(void) {
     struct Memory memory;
     struct Intcode intcode;
@@ -143,7 +173,8 @@ int main(void) {
 
     printf("Memory length: %d\n\n", intcode.memory.length);
 
-    printf("Answer Part A: %d\n", intcode.memory.contents[0]);//2890696
+    printf("Part A answer = %d\n", intcode.memory.contents[0]);// Part A answer = 2890696
+    printf("Part B answer = %d\n", noun_verb());               // Part B answer = 8226
 
     free(memory.contents);
 
