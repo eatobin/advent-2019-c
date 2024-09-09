@@ -2,21 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-int fuelValue(int mass) {
-    return (mass / 3) - 2;
-}
-
-int recFuelValue(int mass) {
-    int sum = 0;
-    int fuel = fuelValue(mass);
-
-    while (fuel > 0) {
-        sum += fuel;
-        fuel = fuelValue(fuel);
-    }
-
-    return sum;
-}
+int fuelValue(int mass);
+int recFuelValue(int mass);
 
 int main(void) {
     FILE *fp;
@@ -53,4 +40,20 @@ int main(void) {
     fclose(fp);
 
     exit(EXIT_SUCCESS);
+}
+
+int fuelValue(int mass) {
+    return (mass / 3) - 2;
+}
+
+int recFuelValue(int mass) {
+    int sum = 0;
+    int fuel = fuelValue(mass);
+
+    while (fuel > 0) {
+        sum += fuel;
+        fuel = fuelValue(fuel);
+    }
+
+    return sum;
 }
