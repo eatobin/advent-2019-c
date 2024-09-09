@@ -12,6 +12,40 @@ struct Intcode {
     struct Memory memory;
 };
 
+char *file_to_string(char *filename);
+int return_memory_length(char *string);
+int *create_initialized_int_array(int memory_length);
+int *make_memory(int *memory, char *string);
+struct Memory return_memory(char *file_path);
+int opcode(struct Intcode *intcode);
+void updated_memory(struct Intcode *intcode, int noun, int verb);
+int noun_verb(void);
+
+int main(void) {
+    struct Memory memory;
+    struct Intcode intcode;
+
+    memory = return_memory("day02.csv");
+    intcode.pointer = 0;
+    intcode.memory = memory;
+    int ic_return = 1;
+
+    updated_memory(&intcode, 12, 2);
+
+    while (ic_return == 1) {
+        ic_return = opcode(&intcode);
+    }
+
+    printf("Memory length: %d\n\n", intcode.memory.length);
+
+    printf("Part A answer = %d\n", intcode.memory.contents[0]);// Part A answer = 2890696
+    printf("Part B answer = %d\n", noun_verb());               // Part B answer = 8226
+
+    free(memory.contents);
+
+    return 0;
+}
+
 char *file_to_string(char *filename) {
     FILE *file;
     char *string;
@@ -154,29 +188,4 @@ int noun_verb(void) {
     }
 end:
     return (100 * noun) + verb;
-}
-
-int main(void) {
-    struct Memory memory;
-    struct Intcode intcode;
-
-    memory = return_memory("day02.csv");
-    intcode.pointer = 0;
-    intcode.memory = memory;
-    int ic_return = 1;
-
-    updated_memory(&intcode, 12, 2);
-
-    while (ic_return == 1) {
-        ic_return = opcode(&intcode);
-    }
-
-    printf("Memory length: %d\n\n", intcode.memory.length);
-
-    printf("Part A answer = %d\n", intcode.memory.contents[0]);// Part A answer = 2890696
-    printf("Part B answer = %d\n", noun_verb());               // Part B answer = 8226
-
-    free(memory.contents);
-
-    return 0;
 }
