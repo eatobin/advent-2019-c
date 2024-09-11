@@ -3,7 +3,8 @@ project(day02 C)
 
 set(CMAKE_C_STANDARD 17)
 
-add_executable(day02 main.c)
+add_executable(day02 main.c
+        file_fns.c)
 
 configure_file(day02.csv
         ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
