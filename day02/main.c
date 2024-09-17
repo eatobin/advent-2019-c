@@ -21,9 +21,8 @@ int main(void) {
     struct Memory memory;
     struct Intcode intcode;
 
-    memory = return_memory("day02.csv");
     intcode.pointer = 0;
-    intcode.memory = memory;
+    intcode.memory = return_memory("day02.csv");
     int ic_return = 1;
 
     updated_memory(&intcode, 12, 2);
@@ -37,7 +36,7 @@ int main(void) {
     printf("Part A answer = %d\n", intcode.memory.contents[0]);// Part A answer = 2890696
     printf("Part B answer = %d\n", noun_verb());               // Part B answer = 8226
 
-    free(memory.contents);
+    free(intcode.memory.contents);
 
     return 0;
 }
