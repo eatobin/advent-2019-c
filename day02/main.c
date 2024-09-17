@@ -59,14 +59,12 @@ int opcode(struct Intcode *intcode) {
                     intcode->memory.contents[address1] +
                     intcode->memory.contents[address2];
             intcode->pointer += 4;
-            action = intcode->memory.contents[intcode->pointer];
             return 1;
         case 2:
             intcode->memory.contents[address3] =
                     intcode->memory.contents[address1] *
                     intcode->memory.contents[address2];
             intcode->pointer += 4;
-            action = intcode->memory.contents[intcode->pointer];
             return 1;
     }
     return 0;
