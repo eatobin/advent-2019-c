@@ -4,7 +4,7 @@
 #include "file_fns.h"
 
 struct Memory {
-    int *contents;
+    int *contents;// dynamically allocated - need free
     int length;
 };
 
