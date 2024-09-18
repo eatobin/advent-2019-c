@@ -1,6 +1,14 @@
-#include <stdio.h>
+#include <malloc.h>
 
-int main(void) {
-    printf("Hello, World!!\n");
+void myFunction() {
+    int *ptr;
+    ptr = malloc(sizeof(*ptr));
+    free(ptr);
+    ptr = NULL;
+}
+
+int main() {
+    myFunction();
+    printf("The function has ended");
     return 0;
 }
