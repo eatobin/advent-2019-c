@@ -3,6 +3,9 @@
 void myFunction() {
     int *ptr;
     ptr = malloc(sizeof(*ptr));
+    *ptr = 67;
+    printf("Hi! %d\n", *ptr);
+    printf("Hi again! %p\n", ptr);
     free(ptr);
     ptr = NULL;
 }
