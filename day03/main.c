@@ -125,6 +125,10 @@ int main() {
     }
     puts(ptrAddress);
     printf("Again: %s\n", ptrAddress);
+    for (char i = 0; i < 4; ++i) {
+        printf("Contents: %d\n", *(ptrAddress + i));
+        printf("Address: %p\n", ptrAddress + i);
+    }
     free(ptrAddress);
     ptrAddress = NULL;
     return 0;
