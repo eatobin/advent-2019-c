@@ -68,28 +68,63 @@
 //    return 0;
 //}
 
+//#include <malloc.h>
+//
+//char *myFunction() {
+//    char *ptr;
+//    ptr = malloc(sizeof(char) * 3);
+//    *(ptr + 0) = 60;
+//    *(ptr + 1) = 61;
+//    *(ptr + 2) = 62;
+//    return ptr;
+//}
+//
+//int main() {
+//    char *ptrAddress;
+//    ptrAddress = myFunction();
+//    for (char i = 0; i < 3; ++i) {
+//        printf("Contents: %d\n", *(ptrAddress + i));
+//        printf("Address: %p\n", ptrAddress + i);
+//    }
+//    *(ptrAddress + 0) = *(ptrAddress + 0) * 2;
+//    *(ptrAddress + 2) = *(ptrAddress + 2) * 2;
+//    printf("0 times 2: %d\n", *(ptrAddress + 0));
+//    printf("2 times 2: %d\n", *(ptrAddress + 2));
+//    free(ptrAddress);
+//    ptrAddress = NULL;
+//    return 0;
+//}
+
 #include <malloc.h>
 
 char *myFunction() {
     char *ptr;
-    ptr = malloc(sizeof(char) * 3);
-    *(ptr + 0) = 60;
-    *(ptr + 1) = 61;
-    *(ptr + 2) = 62;
+    ptr = malloc(sizeof(char) * 4);
+    *(ptr + 0) = 78;
+    *(ptr + 1) = 111;
+    *(ptr + 2) = 0;
+    *(ptr + 3) = 0;
     return ptr;
 }
 
 int main() {
     char *ptrAddress;
     ptrAddress = myFunction();
-    for (char i = 0; i < 3; ++i) {
-        printf("Contents: %d\n", *(ptrAddress + i));
+    for (char i = 0; i < 4; ++i) {
+        printf("Contents: %c\n", *(ptrAddress + i));
         printf("Address: %p\n", ptrAddress + i);
     }
-    *(ptrAddress + 0) = *(ptrAddress + 0) * 2;
-    *(ptrAddress + 2) = *(ptrAddress + 2) * 2;
-    printf("0 times 2: %d\n", *(ptrAddress + 0));
-    printf("2 times 2: %d\n", *(ptrAddress + 2));
+    puts(ptrAddress);
+    printf("Again: %s\n", ptrAddress);
+    *(ptrAddress + 0) = 89;
+    *(ptrAddress + 1) = 101;
+    *(ptrAddress + 2) = 115;
+    for (char i = 0; i < 4; ++i) {
+        printf("Contents: %c\n", *(ptrAddress + i));
+        printf("Address: %p\n", ptrAddress + i);
+    }
+    puts(ptrAddress);
+    printf("Again: %s\n", ptrAddress);
     free(ptrAddress);
     ptrAddress = NULL;
     return 0;
