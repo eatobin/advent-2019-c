@@ -37,6 +37,7 @@ int main(void) {
     printf("Part B answer = %d\n", noun_verb());               // Part B answer = 8226
 
     free(intcode.memory.contents);
+    intcode.memory.contents = NULL;
 
     return 0;
 }

@@ -83,5 +83,8 @@ struct Memory return_memory(char *file_path) {
     memory.contents = make_memory(initialized_int_array, string);
     memory.length = memory_length;
 
+    free(string);
+    string = NULL;
+
     return memory;
 }
