@@ -169,17 +169,24 @@ struct MyStructure {
 
 struct MyStructure *myFunction() {
     struct MyStructure *ptr;
+    struct MyStructure s0;
+    s0.myNum = 11;
     struct MyStructure s1;
-    s1.myNum = 11;
-    ptr = malloc(sizeof(struct MyStructure) * 1);
-    *(ptr + 0) = s1;
+    s1.myNum = 22;
+    ptr = malloc(sizeof(struct MyStructure) * 2);
+    *(ptr + 0) = s0;
+    *(ptr + 1) = s1;
     return ptr;
 }
 
 int main() {
     struct MyStructure *ptrAddress;
     ptrAddress = myFunction();
-    printf("Contents: %d\n", ptrAddress->myNum);
-    printf("Address: %p\n", ptrAddress);
+    for (char i = 0; i < 2; ++i) {
+        printf("Contents: %d\n", (ptrAddress + i)->myNum);
+        printf("Address: %p\n", ptrAddress + i);
+    }
+    free(ptrAddress);
+    ptrAddress = NULL;
     return 0;
 }
