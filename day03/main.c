@@ -180,9 +180,9 @@ struct MyStructure *myFunction() {
     *(threeLetterString1 + 3) = 0;
 
     threeLetterString2 = malloc(sizeof(char) * 4);
-    *(threeLetterString2 + 0) = 66;
-    *(threeLetterString2 + 1) = 111;
-    *(threeLetterString2 + 2) = 98;
+    *(threeLetterString2 + 0) = 84;
+    *(threeLetterString2 + 1) = 105;
+    *(threeLetterString2 + 2) = 109;
     *(threeLetterString2 + 3) = 0;
 
     struct MyStructure *ptr;
@@ -212,6 +212,7 @@ int main() {
     (ptrAddress + 0)->myThreeLetterWord[0] = 89;
     (ptrAddress + 0)->myThreeLetterWord[1] = 111;
     (ptrAddress + 0)->myThreeLetterWord[2] = 117;
+    (ptrAddress + 1)->myThreeLetterWord[0] = 72;
     for (char i = 0; i < 2; ++i) {
         printf("Contents2: %d - %c - %s\n", (ptrAddress + i)->myNum, (ptrAddress + i)->myChar, (ptrAddress + i)->myThreeLetterWord);
         printf("Address2: %p\n", ptrAddress + i);
