@@ -253,13 +253,16 @@ struct Patient *createPatient(int s_number, char *s_name,
 
 int main() {
     struct Patient *eric;
-    eric = createPatient(67, "Nope", "4910 N Via Velazquez", "none", 'M');
+    eric = createPatient(67, "Eric", "4910 N Via Velazquez", "none", 'M');
     printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
-    eric->name = "Eric Tobin";
-    eric->birthdate = "11/01/1956";
+    eric->number = 42;
+    eric->name = strdup("This is crazy how long my new name is!!! No overflow??? :-)");
+    eric->birthdate = strdup("11/01/1956");
     eric->gender = 'F';
     printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
+    free(eric->name);
+    free(eric->address);
+    free(eric->birthdate);
     free(eric);
-    eric = NULL;
     return 0;
 }
