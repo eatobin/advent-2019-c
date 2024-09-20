@@ -161,65 +161,105 @@
 //    return 0;
 //}
 
-#include <malloc.h>
+//#include <malloc.h>
+//
+//struct MyStructure {
+//    int myNum;
+//    char myChar;
+//    char *myThreeLetterWord;
+//};
+//
+//struct MyStructure *myFunction() {
+//    char *threeLetterString1;
+//    char *threeLetterString2;
+//
+//    threeLetterString1 = malloc(sizeof(char) * 4);
+//    *(threeLetterString1 + 0) = 89;
+//    *(threeLetterString1 + 1) = 101;
+//    *(threeLetterString1 + 2) = 115;
+//    *(threeLetterString1 + 3) = 0;
+//
+//    threeLetterString2 = malloc(sizeof(char) * 4);
+//    *(threeLetterString2 + 0) = 84;
+//    *(threeLetterString2 + 1) = 105;
+//    *(threeLetterString2 + 2) = 109;
+//    *(threeLetterString2 + 3) = 0;
+//
+//    struct MyStructure *ptr;
+//    struct MyStructure s0;
+//    s0.myNum = 0;
+//    s0.myChar = 'a';
+//    s0.myThreeLetterWord = threeLetterString1;
+//    struct MyStructure s1;
+//    s1.myNum = 1;
+//    s1.myChar = 'b';
+//    s1.myThreeLetterWord = threeLetterString2;
+//    ptr = malloc(sizeof(struct MyStructure) * 2);
+//    *(ptr + 0) = s0;
+//    *(ptr + 1) = s1;
+//    return ptr;
+//}
+//
+//int main() {
+//    struct MyStructure *ptrAddress;
+//    ptrAddress = myFunction();
+//    for (char i = 0; i < 2; ++i) {
+//        printf("Contents: %d - %c - %s\n", (ptrAddress + i)->myNum, (ptrAddress + i)->myChar, (ptrAddress + i)->myThreeLetterWord);
+//        printf("Address: %p\n", ptrAddress + i);
+//    }
+//    (ptrAddress + 0)->myNum = 111;
+//    (ptrAddress + 1)->myChar = 'z';
+//    (ptrAddress + 0)->myThreeLetterWord[0] = 89;
+//    (ptrAddress + 0)->myThreeLetterWord[1] = 111;
+//    (ptrAddress + 0)->myThreeLetterWord[2] = 117;
+//    (ptrAddress + 1)->myThreeLetterWord[0] = 72;
+//    for (char i = 0; i < 2; ++i) {
+//        printf("Contents2: %d - %c - %s\n", (ptrAddress + i)->myNum, (ptrAddress + i)->myChar, (ptrAddress + i)->myThreeLetterWord);
+//        printf("Address2: %p\n", ptrAddress + i);
+//    }
+//    free(ptrAddress->myThreeLetterWord);
+//    ptrAddress->myThreeLetterWord = NULL;
+//    free(ptrAddress);
+//    ptrAddress = NULL;
+//    return 0;
+//}
 
-struct MyStructure {
-    int myNum;
-    char myChar;
-    char *myThreeLetterWord;
+#include <malloc.h>
+#include <string.h>
+
+struct Patient {
+    int number;
+    char *name;
+    char *address;
+    char *birthdate;
+    char gender;
 };
 
-struct MyStructure *myFunction() {
-    char *threeLetterString1;
-    char *threeLetterString2;
+struct Patient *createPatient(int s_number, char *s_name,
+                              char *s_addr, char *s_bd, char c_sex) {
+    struct Patient *patient;
+    patient = malloc(sizeof(struct Patient));
 
-    threeLetterString1 = malloc(sizeof(char) * 4);
-    *(threeLetterString1 + 0) = 89;
-    *(threeLetterString1 + 1) = 101;
-    *(threeLetterString1 + 2) = 115;
-    *(threeLetterString1 + 3) = 0;
+    patient->number = s_number;
+    patient->name = strdup(s_name);
+    //    patient->name = malloc(strlen(s_name) + 1);
+    //    strcpy(patient->name, s_name);
+    patient->address = strdup(s_addr);
+    patient->birthdate = strdup(s_bd);
+    patient->gender = c_sex;
 
-    threeLetterString2 = malloc(sizeof(char) * 4);
-    *(threeLetterString2 + 0) = 84;
-    *(threeLetterString2 + 1) = 105;
-    *(threeLetterString2 + 2) = 109;
-    *(threeLetterString2 + 3) = 0;
-
-    struct MyStructure *ptr;
-    struct MyStructure s0;
-    s0.myNum = 0;
-    s0.myChar = 'a';
-    s0.myThreeLetterWord = threeLetterString1;
-    struct MyStructure s1;
-    s1.myNum = 1;
-    s1.myChar = 'b';
-    s1.myThreeLetterWord = threeLetterString2;
-    ptr = malloc(sizeof(struct MyStructure) * 2);
-    *(ptr + 0) = s0;
-    *(ptr + 1) = s1;
-    return ptr;
+    return patient;
 }
 
 int main() {
-    struct MyStructure *ptrAddress;
-    ptrAddress = myFunction();
-    for (char i = 0; i < 2; ++i) {
-        printf("Contents: %d - %c - %s\n", (ptrAddress + i)->myNum, (ptrAddress + i)->myChar, (ptrAddress + i)->myThreeLetterWord);
-        printf("Address: %p\n", ptrAddress + i);
-    }
-    (ptrAddress + 0)->myNum = 111;
-    (ptrAddress + 1)->myChar = 'z';
-    (ptrAddress + 0)->myThreeLetterWord[0] = 89;
-    (ptrAddress + 0)->myThreeLetterWord[1] = 111;
-    (ptrAddress + 0)->myThreeLetterWord[2] = 117;
-    (ptrAddress + 1)->myThreeLetterWord[0] = 72;
-    for (char i = 0; i < 2; ++i) {
-        printf("Contents2: %d - %c - %s\n", (ptrAddress + i)->myNum, (ptrAddress + i)->myChar, (ptrAddress + i)->myThreeLetterWord);
-        printf("Address2: %p\n", ptrAddress + i);
-    }
-    free(ptrAddress->myThreeLetterWord);
-    ptrAddress->myThreeLetterWord = NULL;
-    free(ptrAddress);
-    ptrAddress = NULL;
+    struct Patient *eric;
+    eric = createPatient(67, "Nope", "4910 N Via Velazquez", "none", 'M');
+    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
+    eric->name = "Eric Tobin";
+    eric->birthdate = "11/01/1956";
+    eric->gender = 'F';
+    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
+    free(eric);
+    eric = NULL;
     return 0;
 }
