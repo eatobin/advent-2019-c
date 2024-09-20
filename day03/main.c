@@ -166,16 +166,25 @@
 struct MyStructure {
     int myNum;
     char myChar;
+    char *myThreeLetterWord;
 };
 
 struct MyStructure *myFunction() {
+    char *threeLetters;
+    threeLetters = malloc(sizeof(char) * 4);
+    *(threeLetters + 0) = 89;
+    *(threeLetters + 1) = 101;
+    *(threeLetters + 2) = 115;
+    *(threeLetters + 3) = 0;
     struct MyStructure *ptr;
     struct MyStructure s0;
     s0.myNum = 11;
     s0.myChar = 'a';
+    s0.myThreeLetterWord = threeLetters;
     struct MyStructure s1;
     s1.myNum = 22;
     s1.myChar = 'b';
+    s1.myThreeLetterWord = threeLetters;
     ptr = malloc(sizeof(struct MyStructure) * 2);
     *(ptr + 0) = s0;
     *(ptr + 1) = s1;
@@ -186,7 +195,7 @@ int main() {
     struct MyStructure *ptrAddress;
     ptrAddress = myFunction();
     for (char i = 0; i < 2; ++i) {
-        printf("Contents: %d - %c\n", (ptrAddress + i)->myNum, (ptrAddress + i)->myChar);
+        printf("Contents: %d - %c - %s\n", (ptrAddress + i)->myNum, (ptrAddress + i)->myChar, (ptrAddress + i)->myThreeLetterWord);
         printf("Address: %p\n", ptrAddress + i);
     }
     free(ptrAddress);
