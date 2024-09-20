@@ -170,21 +170,21 @@ struct MyStructure {
 };
 
 struct MyStructure *myFunction() {
-    char *threeLetters;
-    threeLetters = malloc(sizeof(char) * 4);
-    *(threeLetters + 0) = 89;
-    *(threeLetters + 1) = 101;
-    *(threeLetters + 2) = 115;
-    *(threeLetters + 3) = 0;
+    char *threeLetterString;
+    threeLetterString = malloc(sizeof(char) * 4);
+    *(threeLetterString + 0) = 89;
+    *(threeLetterString + 1) = 101;
+    *(threeLetterString + 2) = 115;
+    *(threeLetterString + 3) = 0;
     struct MyStructure *ptr;
     struct MyStructure s0;
-    s0.myNum = 11;
+    s0.myNum = 0;
     s0.myChar = 'a';
-    s0.myThreeLetterWord = threeLetters;
+    s0.myThreeLetterWord = threeLetterString;
     struct MyStructure s1;
-    s1.myNum = 22;
+    s1.myNum = 1;
     s1.myChar = 'b';
-    s1.myThreeLetterWord = threeLetters;
+    s1.myThreeLetterWord = threeLetterString;
     ptr = malloc(sizeof(struct MyStructure) * 2);
     *(ptr + 0) = s0;
     *(ptr + 1) = s1;
@@ -198,6 +198,17 @@ int main() {
         printf("Contents: %d - %c - %s\n", (ptrAddress + i)->myNum, (ptrAddress + i)->myChar, (ptrAddress + i)->myThreeLetterWord);
         printf("Address: %p\n", ptrAddress + i);
     }
+    (ptrAddress + 0)->myNum = 111;
+    (ptrAddress + 1)->myChar = 'z';
+    (ptrAddress + 0)->myThreeLetterWord[0] = 89;
+    (ptrAddress + 1)->myThreeLetterWord[1] = 66;// check this - why no change per entry?
+    (ptrAddress + 0)->myThreeLetterWord[2] = 117;
+    for (char i = 0; i < 2; ++i) {
+        printf("Contents2: %d - %c - %s\n", (ptrAddress + i)->myNum, (ptrAddress + i)->myChar, (ptrAddress + i)->myThreeLetterWord);
+        printf("Address2: %p\n", ptrAddress + i);
+    }
+    free(ptrAddress->myThreeLetterWord);
+    ptrAddress->myThreeLetterWord = NULL;
     free(ptrAddress);
     ptrAddress = NULL;
     return 0;
