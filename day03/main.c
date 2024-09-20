@@ -168,9 +168,12 @@ struct MyStructure {
 };
 
 struct MyStructure *myFunction() {
+    struct MyStructure *ptr;
     struct MyStructure s1;
-    s1.myNum = 13;
-    return &s1;
+    s1.myNum = 11;
+    ptr = malloc(sizeof(struct MyStructure) * 1);
+    *(ptr + 0) = s1;
+    return ptr;
 }
 
 int main() {
