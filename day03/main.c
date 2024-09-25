@@ -224,45 +224,79 @@
 //    return 0;
 //}
 
-#include <malloc.h>
-#include <string.h>
+//#include <malloc.h>
+//#include <string.h>
+//
+//struct Patient {
+//    int number;
+//    char *name;
+//    char *address;
+//    char *birthdate;
+//    char gender;
+//};
+//
+//struct Patient *createPatient(int s_number, char *s_name,
+//                              char *s_addr, char *s_bd, char c_sex) {
+//    struct Patient *patient;
+//    patient = malloc(sizeof(struct Patient));
+//
+//    patient->number = s_number;
+//    patient->name = strdup(s_name);
+//    //    patient->name = malloc(strlen(s_name) + 1);
+//    //    strcpy(patient->name, s_name);
+//    patient->address = strdup(s_addr);
+//    patient->birthdate = strdup(s_bd);
+//    patient->gender = c_sex;
+//
+//    return patient;
+//}
+//
+//int main() {
+//    struct Patient *eric;
+//    eric = createPatient(67, "Eric", "4910 N Via Velazquez", "none", 'M');
+//    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
+//    eric->number = 42;
+//    eric->name = strdup("This is crazy how long my new name is!!! No overflow??? :-)");
+//    eric->birthdate = strdup("11/01/1956");
+//    eric->gender = 'F';
+//    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
+//    free(eric->name);
+//    free(eric->address);
+//    free(eric->birthdate);
+//    free(eric);
+//    return 0;
+//}
 
-struct Patient {
-    int number;
-    char *name;
-    char *address;
-    char *birthdate;
-    char gender;
-};
-
-struct Patient *createPatient(int s_number, char *s_name,
-                              char *s_addr, char *s_bd, char c_sex) {
-    struct Patient *patient;
-    patient = malloc(sizeof(struct Patient));
-
-    patient->number = s_number;
-    patient->name = strdup(s_name);
-    //    patient->name = malloc(strlen(s_name) + 1);
-    //    strcpy(patient->name, s_name);
-    patient->address = strdup(s_addr);
-    patient->birthdate = strdup(s_bd);
-    patient->gender = c_sex;
-
-    return patient;
-}
+// C program to demonstrate pointer to pointer
+#include <stdio.h>
 
 int main() {
-    struct Patient *eric;
-    eric = createPatient(67, "Eric", "4910 N Via Velazquez", "none", 'M');
-    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
-    eric->number = 42;
-    eric->name = strdup("This is crazy how long my new name is!!! No overflow??? :-)");
-    eric->birthdate = strdup("11/01/1956");
-    eric->gender = 'F';
-    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
-    free(eric->name);
-    free(eric->address);
-    free(eric->birthdate);
-    free(eric);
+    int var = 789;
+
+    // pointer for var
+    int *ptr1;
+
+    // double pointer for ptr1
+    int **ptr2;
+
+    // storing address of var in ptr1
+    ptr1 = &var;
+
+    // Storing address of ptr1 in ptr2
+    ptr2 = &ptr1;
+
+    // Displaying value of var using
+    // both single and double pointers
+    printf("Value of var = %d\n", var);
+    printf("Value of var using single pointer = %d\n", *ptr1);
+    printf("Value of var using double pointer = %d\n\n", **ptr2);
+
+    char *me = "Eric";
+    char **ptr20;
+    ptr20 = &me;
+
+    printf("Value of me - a single pointer to begin with = %s\n", me);
+    printf("Value of me using double pointer = %s\n", *ptr20);
+
     return 0;
 }
