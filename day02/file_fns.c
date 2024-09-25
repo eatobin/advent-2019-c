@@ -68,6 +68,7 @@ int *make_memory(int *memory, char *string) {
         token_at_index = strtok(NULL, ",");
         index++;
     }
+    free(string);
     return memory;
 }
 
@@ -82,8 +83,6 @@ struct Memory return_memory(char *file_path) {
     initialized_int_array = create_initialized_int_array(memory_length);
     memory.contents = make_memory(initialized_int_array, string);
     memory.length = memory_length;
-
-    free(string);
     string = NULL;
 
     return memory;
