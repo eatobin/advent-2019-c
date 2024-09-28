@@ -21,7 +21,7 @@ char *file_to_string(char *filename) {
     length = ftell(file);
     fseek(file, 0, SEEK_SET);
 
-    string = malloc(sizeof(char) * (length + 1));
+    string = (char *) malloc(sizeof(char) * (length + 1));
 
     while ((c = fgetc(file)) != EOF) {
         string[i] = c;
@@ -82,6 +82,7 @@ struct Memory return_memory(char *file_path) {
     initialized_int_array = create_initialized_int_array(memory_length);
     memory.contents = make_memory(initialized_int_array, string);
     memory.length = memory_length;
+
     free(string);
     string = NULL;
 
