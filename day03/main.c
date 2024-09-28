@@ -1,20 +1,20 @@
-//#include <malloc.h>
-//
-//void myFunction() {
-//    int *ptr;
-//    ptr = malloc(sizeof(*ptr));
-//    *ptr = 67;
-//    printf("Hi! %d\n", *ptr);
-//    printf("Hi again! %p\n", ptr);
-//    free(ptr);
-//    ptr = NULL;
-//}
-//
-//int main() {
-//    myFunction();
-//    printf("The function has ended");
-//    return 0;
-//}
+#include <malloc.h>
+
+void myFunction() {
+    int *ptr;
+    ptr = malloc(sizeof(*ptr));
+    *ptr = 67;
+    printf("Hi! %d\n", *ptr);
+    printf("Hi again! %p\n", ptr);
+    free(ptr);
+    ptr = NULL;
+}
+
+int main() {
+    myFunction();
+    printf("The function has ended");
+    return 0;
+}
 
 //#include <malloc.h>
 //
@@ -267,36 +267,36 @@
 //    return 0;
 //}
 
-// C program to demonstrate pointer to pointer
-#include <stdio.h>
-
-int main() {
-    int var = 789;
-
-    // pointer for var
-    int *ptr1;
-
-    // double pointer for ptr1
-    int **ptr2;
-
-    // storing address of var in ptr1
-    ptr1 = &var;
-
-    // Storing address of ptr1 in ptr2
-    ptr2 = &ptr1;
-
-    // Displaying value of var using
-    // both single and double pointers
-    printf("Value of var = %d\n", var);
-    printf("Value of var using single pointer = %d\n", *ptr1);
-    printf("Value of var using double pointer = %d\n\n", **ptr2);
-
-    char *me = "Eric";
-    char **ptr20;
-    ptr20 = &me;
-
-    printf("Value of me - a single pointer to begin with = %s\n", me);
-    printf("Value of me using double pointer = %s\n", *ptr20);
-
-    return 0;
-}
+//// C program to demonstrate pointer to pointer
+//#include <stdio.h>
+//
+//int main() {
+//    int var = 789;
+//
+//    // pointer for var
+//    int *ptr1;
+//
+//    // double pointer for ptr1
+//    int **ptr2;
+//
+//    // storing address of var in ptr1
+//    ptr1 = &var;
+//
+//    // Storing address of ptr1 in ptr2
+//    ptr2 = &ptr1;
+//
+//    // Displaying value of var using
+//    // both single and double pointers
+//    printf("Value of var = %d\n", var);
+//    printf("Value of var using single pointer = %d\n", *ptr1);
+//    printf("Value of var using double pointer = %d\n\n", **ptr2);
+//
+//    char *me = "Eric";
+//    char **ptr20;
+//    ptr20 = &me;
+//
+//    printf("Value of me - a single pointer to begin with = %s\n", me);
+//    printf("Value of me using double pointer = %s\n", *ptr20);
+//
+//    return 0;
+//}
