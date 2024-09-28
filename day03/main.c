@@ -225,26 +225,69 @@
 //    return 0;
 //}
 
+//#include <malloc.h>
+//#include <string.h>
+//
+//struct Patient {
+//    int number;
+//    char *name;
+//    char *address;
+//    char *birthdate;
+//    char gender;
+//};
+//
+//struct Patient *createPatient(int s_number, char *s_name,
+//                              char *s_addr, char *s_bd, char c_sex) {
+//    struct Patient *patient;
+//    patient = (struct Patient *) malloc(sizeof(struct Patient));
+//
+//    patient->number = s_number;
+//    patient->name = strdup(s_name);
+//    //    patient->name = malloc(strlen(s_name) + 1);
+//    //    strcpy(patient->name, s_name);
+//    patient->address = strdup(s_addr);
+//    patient->birthdate = strdup(s_bd);
+//    patient->gender = c_sex;
+//
+//    return patient;
+//}
+//
+//int main() {
+//    struct Patient *eric;
+//    eric = createPatient(67, "Eric", "4910 N Via Velazquez", "none", 'M');
+//    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
+//    eric->number = 42;
+//    eric->name = strdup("This is crazy how long my new name is!!! No overflow??? :-)");
+//    eric->birthdate = strdup("11/01/1956");
+//    eric->gender = 'F';
+//    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
+//    free(eric->name);
+//    free(eric->address);
+//    free(eric->birthdate);
+//    free(eric);
+//    return 0;
+//}
+
 #include <malloc.h>
 #include <string.h>
 
-struct Patient {
+typedef struct Patient {
     int number;
     char *name;
     char *address;
     char *birthdate;
     char gender;
-};
+} doggy;
 
-struct Patient *createPatient(int s_number, char *s_name,
-                              char *s_addr, char *s_bd, char c_sex) {
-    struct Patient *patient;
-    patient = (struct Patient *) malloc(sizeof(struct Patient));
+doggy *createPatient(int s_number, char *s_name,
+                     char *s_addr, char *s_bd, char c_sex) {
+    doggy *patient;
+    patient = (doggy *) malloc(sizeof(doggy));
 
     patient->number = s_number;
-    patient->name = strdup(s_name);
-    //    patient->name = malloc(strlen(s_name) + 1);
-    //    strcpy(patient->name, s_name);
+    //    patient->name = strdup(s_name);
+    patient->name = (char *) malloc(strlen(s_name) + 1);
+    strcpy(patient->name, s_name);
     patient->address = strdup(s_addr);
     patient->birthdate = strdup(s_bd);
     patient->gender = c_sex;
