@@ -1,26 +1,26 @@
-#include <malloc.h>
-
-void myFunction() {
-    int *ptr;
-    ptr = malloc(sizeof(*ptr));
-    *ptr = 67;
-    printf("Hi! %d\n", *ptr);
-    printf("Hi again! %p\n", ptr);
-    free(ptr);
-    ptr = NULL;
-}
-
-int main() {
-    myFunction();
-    printf("The function has ended");
-    return 0;
-}
+//#include <malloc.h>
+//
+//void myFunction() {
+//    int *ptr;
+//    ptr = (int *) malloc(sizeof(int));
+//    *ptr = 67;
+//    printf("Hi! %d\n", *ptr);
+//    printf("Hi again! %p\n", ptr);
+//    free(ptr);
+//    ptr = NULL;
+//}
+//
+//int main() {
+//    myFunction();
+//    printf("The function has ended");
+//    return 0;
+//}
 
 //#include <malloc.h>
 //
 //int *myFunction() {
 //    int *ptr;
-//    ptr = malloc(sizeof(*ptr));
+//    ptr = (int *) malloc(sizeof(int));
 //    *ptr = 67;
 //    printf("Hi! %d\n", *ptr);
 //    printf("Hi again! %p\n", ptr);
@@ -44,7 +44,7 @@ int main() {
 //
 //int *myFunction() {
 //    int *ptr;
-//    ptr = malloc(sizeof(*ptr) * 3);
+//    ptr = (int *) malloc(sizeof(int) * 3);
 //    *ptr = 67;
 //    *(ptr + 1) = 68;
 //    printf("Hi! %d\n", *ptr);
@@ -72,7 +72,7 @@ int main() {
 //
 //char *myFunction() {
 //    char *ptr;
-//    ptr = malloc(sizeof(char) * 3);
+//    ptr = (char *) (char *) malloc(sizeof(char) * 3);
 //    *(ptr + 0) = 60;
 //    *(ptr + 1) = 61;
 //    *(ptr + 2) = 62;
@@ -99,7 +99,7 @@ int main() {
 //
 //char *myFunction() {
 //    char *ptr;
-//    ptr = malloc(sizeof(char) * 4);
+//    ptr = (char *) malloc(sizeof(char) * 4);
 //    *(ptr + 0) = 78;
 //    *(ptr + 1) = 111;
 //    *(ptr + 2) = 0;
@@ -138,17 +138,18 @@ int main() {
 //
 //double *myFunction() {
 //    double *ptr;
-//    ptr = malloc(sizeof(double) * 3);
+//    ptr = (double *) malloc(sizeof(double) * 4);
 //    *(ptr + 0) = 60.0;
 //    *(ptr + 1) = 61.1;
 //    *(ptr + 2) = 62.2;
+//    *(ptr + 3) = 63.3;
 //    return ptr;
 //}
 //
 //int main() {
 //    double *ptrAddress;
 //    ptrAddress = myFunction();
-//    for (char i = 0; i < 3; ++i) {
+//    for (char i = 0; i < 4; ++i) {
 //        printf("Contents: %lf\n", *(ptrAddress + i));
 //        printf("Address: %p\n", ptrAddress + i);
 //    }
@@ -173,13 +174,13 @@ int main() {
 //    char *threeLetterString1;
 //    char *threeLetterString2;
 //
-//    threeLetterString1 = malloc(sizeof(char) * 4);
+//    threeLetterString1 = (char *) malloc(sizeof(char) * 4);
 //    *(threeLetterString1 + 0) = 89;
 //    *(threeLetterString1 + 1) = 101;
 //    *(threeLetterString1 + 2) = 115;
 //    *(threeLetterString1 + 3) = 0;
 //
-//    threeLetterString2 = malloc(sizeof(char) * 4);
+//    threeLetterString2 = (char *) malloc(sizeof(char) * 4);
 //    *(threeLetterString2 + 0) = 84;
 //    *(threeLetterString2 + 1) = 105;
 //    *(threeLetterString2 + 2) = 109;
@@ -224,48 +225,48 @@ int main() {
 //    return 0;
 //}
 
-//#include <malloc.h>
-//#include <string.h>
-//
-//struct Patient {
-//    int number;
-//    char *name;
-//    char *address;
-//    char *birthdate;
-//    char gender;
-//};
-//
-//struct Patient *createPatient(int s_number, char *s_name,
-//                              char *s_addr, char *s_bd, char c_sex) {
-//    struct Patient *patient;
-//    patient = malloc(sizeof(struct Patient));
-//
-//    patient->number = s_number;
-//    patient->name = strdup(s_name);
-//    //    patient->name = malloc(strlen(s_name) + 1);
-//    //    strcpy(patient->name, s_name);
-//    patient->address = strdup(s_addr);
-//    patient->birthdate = strdup(s_bd);
-//    patient->gender = c_sex;
-//
-//    return patient;
-//}
-//
-//int main() {
-//    struct Patient *eric;
-//    eric = createPatient(67, "Eric", "4910 N Via Velazquez", "none", 'M');
-//    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
-//    eric->number = 42;
-//    eric->name = strdup("This is crazy how long my new name is!!! No overflow??? :-)");
-//    eric->birthdate = strdup("11/01/1956");
-//    eric->gender = 'F';
-//    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
-//    free(eric->name);
-//    free(eric->address);
-//    free(eric->birthdate);
-//    free(eric);
-//    return 0;
-//}
+#include <malloc.h>
+#include <string.h>
+
+struct Patient {
+    int number;
+    char *name;
+    char *address;
+    char *birthdate;
+    char gender;
+};
+
+struct Patient *createPatient(int s_number, char *s_name,
+                              char *s_addr, char *s_bd, char c_sex) {
+    struct Patient *patient;
+    patient = (struct Patient *) malloc(sizeof(struct Patient));
+
+    patient->number = s_number;
+    patient->name = strdup(s_name);
+    //    patient->name = malloc(strlen(s_name) + 1);
+    //    strcpy(patient->name, s_name);
+    patient->address = strdup(s_addr);
+    patient->birthdate = strdup(s_bd);
+    patient->gender = c_sex;
+
+    return patient;
+}
+
+int main() {
+    struct Patient *eric;
+    eric = createPatient(67, "Eric", "4910 N Via Velazquez", "none", 'M');
+    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
+    eric->number = 42;
+    eric->name = strdup("This is crazy how long my new name is!!! No overflow??? :-)");
+    eric->birthdate = strdup("11/01/1956");
+    eric->gender = 'F';
+    printf("Contents:\n%d\n%s\n%s\n%s\n%c\n", eric->number, eric->name, eric->address, eric->birthdate, eric->gender);
+    free(eric->name);
+    free(eric->address);
+    free(eric->birthdate);
+    free(eric);
+    return 0;
+}
 
 //// C program to demonstrate pointer to pointer
 //#include <stdio.h>
