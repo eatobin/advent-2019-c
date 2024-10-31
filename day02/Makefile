@@ -3,11 +3,14 @@
 # target: dependencies
 #   action
 
+file_fns.o: file_fns.c
+	clang -c file_fns.c
+
 main.o: main.c
 	clang -c main.c
 
-main: main.o
-	clang main.o -o main
+main: main.o file_fns.o
+	clang main.o file_fns.o -o main
 
 run: main
 	./main
