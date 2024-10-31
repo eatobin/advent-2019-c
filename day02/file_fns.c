@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Memory {
+typedef struct Memory {
     int *contents;
     int length;
-};
+}aMemory;
 
 char *file_to_string(char *filename) {
     FILE *file;
@@ -71,11 +71,11 @@ int *make_memory(int *memory, char *string) {
     return memory;
 }
 
-struct Memory return_memory(char *file_path) {
+aMemory return_memory(char *file_path) {
     char *string;
     int memory_length;
     int *initialized_int_array;
-    struct Memory memory;
+    aMemory memory;
 
     string = file_to_string(file_path);
     memory_length = return_memory_length(string);

@@ -3,23 +3,23 @@
 
 #include "file_fns.h"
 
-struct Memory {
+typedef struct Memory {
     int *contents;// dynamically allocated - need free
     int length;
-};
+} aMemory;
 
-struct Intcode {
+typedef struct Intcode {
     int pointer;
-    struct Memory memory;
-};
+    aMemory memory;
+} anIntcode;
 
-int opcode(struct Intcode *intcode);
-void updated_memory(struct Intcode *intcode, int noun, int verb);
+int opcode(anIntcode *intcode);
+void updated_memory(anIntcode *intcode, int noun, int verb);
 int noun_verb(void);
 
 int main(void) {
-    struct Memory memory;
-    struct Intcode intcode;
+    aMemory memory;
+    anIntcode intcode;
 
     intcode.pointer = 0;
     intcode.memory = return_memory("day02.csv");
@@ -78,7 +78,7 @@ void updated_memory(struct Intcode *intcode, int noun, int verb) {
 int noun_verb(void) {
     int noun;
     int verb;
-    struct Memory memory;
+    aMemory memory;
     struct Intcode intcode;
     int ic_return;
     int candidate;
