@@ -3,7 +3,7 @@ project(day01 C)
 
 set(CMAKE_C_STANDARD 17)
 
-add_executable(day01 main.c)
+add_executable(day01 day01.c)
 
 configure_file(day01.txt
         ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)

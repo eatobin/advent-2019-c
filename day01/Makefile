@@ -3,14 +3,14 @@
 # target: dependencies
 #   action
 
-main.o: main.c
-	clang -c main.c
+day01.o: day01.c
+	clang -c day01.c
 
-main: main.o
-	clang main.o -o main
+day01: day01.o
+	clang day01.o -o day01
 
-run: main
-	./main
+run: day01
+	./day01
 
 clean :
-	rm main *.o
+	rm day01 *.o
