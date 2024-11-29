@@ -19,7 +19,7 @@ char *file_to_string(const char *filename) {
     length = ftell(file);
     fseek(file, 0, SEEK_SET);
 
-    char *string = (char *) malloc(sizeof(char) * (length + 1));
+    char *string = malloc(sizeof(char) * (length + 1));
 
     while ((c = fgetc(file)) != EOF) {
         string[i] = c;
@@ -46,8 +46,8 @@ int return_memory_length(const char *string) {
     return count + 1;
 }
 
-int *create_initialized_int_array(int memory_length) {
-    int *ret = (int *) malloc(memory_length * sizeof(int));
+int *create_initialized_int_array(const int memory_length) {
+    int *ret = malloc(memory_length * sizeof(int));
     if (!ret) return NULL;
 
     for (int i = 0; i < memory_length; ++i)

@@ -65,7 +65,7 @@ int opcode(struct Intcode *intcode) {
     }
 }
 
-void updated_memory(const struct Intcode *intcode, int noun, int verb) {
+void updated_memory(const struct Intcode *intcode, const int noun, const int verb) {
     intcode->memory.contents[1] = noun;
     intcode->memory.contents[2] = verb;
 }
@@ -75,9 +75,9 @@ int noun_verb(void) {
     int verb = 0;
     struct Intcode intcode;
 
-    for (; noun < 100; noun++) {
+    for (; noun < 100; noun++)
         for (; verb < 100; verb++) {
-            aMemory memory = return_memory("day02.csv");
+            const aMemory memory = return_memory("day02.csv");
             intcode.pointer = 0;
             intcode.memory = memory;
             updated_memory(&intcode, noun, verb);
@@ -87,12 +87,11 @@ int noun_verb(void) {
                 ic_return = opcode(&intcode);
             }
 
-            int candidate = intcode.memory.contents[0];
+            const int candidate = intcode.memory.contents[0];
             if (candidate == 19690720) {
                 goto end;
             }
         }
-    }
 end:
-    return (100 * noun) + verb;
+    return 100 * noun + verb;
 }
