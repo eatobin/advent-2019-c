@@ -5,23 +5,21 @@
 typedef struct Memory {
     int *contents;
     int length;
-}aMemory;
+} aMemory;
 
-char *file_to_string(char *filename) {
-    FILE *file;
-    char *string;
+char *file_to_string(const char *filename) {
     char c;
     int i = 0;
     int length = 0;
 
-    file = fopen(filename, "r");
+    FILE *file = fopen(filename, "r");
     if (!file) return NULL;
 
     fseek(file, 0, SEEK_END);
     length = ftell(file);
     fseek(file, 0, SEEK_SET);
 
-    string = (char *) malloc(sizeof(char) * (length + 1));
+    char *string = (char *) malloc(sizeof(char) * (length + 1));
 
     while ((c = fgetc(file)) != EOF) {
         string[i] = c;
@@ -32,24 +30,24 @@ char *file_to_string(char *filename) {
     return string;
 }
 
-int return_memory_length(char *string) {
-    int i = 0;
+int return_memory_length(const char *string) {
     int count = 0;
-    char c;
 
-    while ((c = string[i]) != '\0') {
-        if (c == ',') {
-            count++;
+    if (string != NULL) {
+        char c;
+        int i = 0;
+        while ((c = string[i]) != '\0') {
+            if (c == ',') {
+                count++;
+            }
+            i++;
         }
-        i++;
     }
     return count + 1;
 }
 
 int *create_initialized_int_array(int memory_length) {
-    int *ret;
-
-    ret = (int *) malloc(memory_length * sizeof(int));
+    int *ret = (int *) malloc(memory_length * sizeof(int));
     if (!ret) return NULL;
 
     for (int i = 0; i < memory_length; ++i)
@@ -59,10 +57,11 @@ int *create_initialized_int_array(int memory_length) {
 }
 
 int *make_memory(int *memory, char *string) {
+    if (memory == NULL) {
+        exit(1);
+    }
     int index = 0;
-    char *token_at_index;
-
-    token_at_index = strtok(string, ",");
+    const char *token_at_index = strtok(string, ",");
     while (token_at_index) {
         memory[index] = atoi(token_at_index);
         token_at_index = strtok(NULL, ",");
@@ -71,15 +70,12 @@ int *make_memory(int *memory, char *string) {
     return memory;
 }
 
-aMemory return_memory(char *file_path) {
-    char *string;
-    int memory_length;
-    int *initialized_int_array;
+aMemory return_memory(const char *file_path) {
     aMemory memory;
 
-    string = file_to_string(file_path);
-    memory_length = return_memory_length(string);
-    initialized_int_array = create_initialized_int_array(memory_length);
+    char *string = file_to_string(file_path);
+    const int memory_length = return_memory_length(string);
+    int *initialized_int_array = create_initialized_int_array(memory_length);
     memory.contents = make_memory(initialized_int_array, string);
     memory.length = memory_length;
 

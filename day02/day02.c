@@ -14,11 +14,10 @@ typedef struct Intcode {
 } anIntcode;
 
 int opcode(anIntcode *intcode);
-void updated_memory(anIntcode *intcode, int noun, int verb);
+void updated_memory(const anIntcode *intcode, int noun, int verb);
 int noun_verb(void);
 
 int main(void) {
-    aMemory memory;
     anIntcode intcode;
 
     intcode.pointer = 0;
@@ -43,15 +42,10 @@ int main(void) {
 }
 
 int opcode(struct Intcode *intcode) {
-    int action;
-    int address1;
-    int address2;
-    int address3;
-
-    action = intcode->memory.contents[intcode->pointer];
-    address1 = intcode->memory.contents[intcode->pointer + 1];
-    address2 = intcode->memory.contents[intcode->pointer + 2];
-    address3 = intcode->memory.contents[intcode->pointer + 3];
+    const int action = intcode->memory.contents[intcode->pointer];
+    const int address1 = intcode->memory.contents[intcode->pointer + 1];
+    const int address2 = intcode->memory.contents[intcode->pointer + 2];
+    const int address3 = intcode->memory.contents[intcode->pointer + 3];
 
     switch (action) {
         case 1:
@@ -66,36 +60,34 @@ int opcode(struct Intcode *intcode) {
                     intcode->memory.contents[address2];
             intcode->pointer += 4;
             return 1;
+        default:
+            return 0;
     }
-    return 0;
 }
 
-void updated_memory(struct Intcode *intcode, int noun, int verb) {
+void updated_memory(const struct Intcode *intcode, int noun, int verb) {
     intcode->memory.contents[1] = noun;
     intcode->memory.contents[2] = verb;
 }
 
 int noun_verb(void) {
-    int noun;
-    int verb;
-    aMemory memory;
+    int noun = 0;
+    int verb = 0;
     struct Intcode intcode;
-    int ic_return;
-    int candidate;
 
-    for (noun = 0; noun < 100; noun++) {
-        for (verb = 0; verb < 100; verb++) {
-            memory = return_memory("day02.csv");
+    for (; noun < 100; noun++) {
+        for (; verb < 100; verb++) {
+            aMemory memory = return_memory("day02.csv");
             intcode.pointer = 0;
             intcode.memory = memory;
             updated_memory(&intcode, noun, verb);
 
-            ic_return = 1;
+            int ic_return = 1;
             while (ic_return == 1) {
                 ic_return = opcode(&intcode);
             }
 
-            candidate = intcode.memory.contents[0];
+            int candidate = intcode.memory.contents[0];
             if (candidate == 19690720) {
                 goto end;
             }
