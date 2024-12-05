@@ -65,7 +65,7 @@ int opcode(struct Intcode *intcode) {
     }
 }
 
-void updated_memory(const struct Intcode *intcode, const int noun, const int verb) {
+void updated_memory(const anIntcode *intcode, int noun, int verb) {
     intcode->memory.contents[1] = noun;
     intcode->memory.contents[2] = verb;
 }
