@@ -41,7 +41,7 @@ int main(void) {
     return 0;
 }
 
-int opcode(struct Intcode *intcode) {
+int opcode(anIntcode *intcode) {
     const int action = intcode->memory.contents[intcode->pointer];
     const int address1 = intcode->memory.contents[intcode->pointer + 1];
     const int address2 = intcode->memory.contents[intcode->pointer + 2];
