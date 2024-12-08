@@ -66,8 +66,9 @@ int opcode(struct Intcode *intcode) {
                     intcode->memory.contents[address2];
             intcode->pointer += 4;
             return 1;
+        default:
+            return 0;
     }
-    return 0;
 }
 
 void updated_memory(struct Intcode *intcode, int noun, int verb) {
