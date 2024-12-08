@@ -14,11 +14,10 @@ typedef struct Intcode {
 } anIntcode;
 
 int opcode(anIntcode *intcode);
-void updated_memory(anIntcode *intcode, int noun, int verb);
+void updated_memory(const anIntcode *intcode, int noun, int verb);
 int noun_verb(void);
 
 int main(void) {
-    aMemory memory;
     anIntcode intcode;
 
     intcode.pointer = 0;
@@ -43,15 +42,11 @@ int main(void) {
 }
 
 int opcode(struct Intcode *intcode) {
-    int action;
-    int address1;
-    int address2;
-    int address3;
 
-    action = intcode->memory.contents[intcode->pointer];
-    address1 = intcode->memory.contents[intcode->pointer + 1];
-    address2 = intcode->memory.contents[intcode->pointer + 2];
-    address3 = intcode->memory.contents[intcode->pointer + 3];
+    const int action = intcode->memory.contents[intcode->pointer];
+    const int address1 = intcode->memory.contents[intcode->pointer + 1];
+    const int address2 = intcode->memory.contents[intcode->pointer + 2];
+    const int address3 = intcode->memory.contents[intcode->pointer + 3];
 
     switch (action) {
         case 1:
@@ -71,7 +66,7 @@ int opcode(struct Intcode *intcode) {
     }
 }
 
-void updated_memory(struct Intcode *intcode, int noun, int verb) {
+void updated_memory(const struct Intcode *intcode, const int noun, const int verb) {
     intcode->memory.contents[1] = noun;
     intcode->memory.contents[2] = verb;
 }
