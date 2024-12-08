@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.29)
 project(day02 C)
 
-set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_STANDARD 11)
 
 add_executable(day02
         file_fns.c
