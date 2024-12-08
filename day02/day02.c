@@ -79,24 +79,21 @@ void updated_memory(struct Intcode *intcode, int noun, int verb) {
 int noun_verb(void) {
     int noun;
     int verb;
-    aMemory memory;
     struct Intcode intcode;
-    int ic_return;
-    int candidate;
 
     for (noun = 0; noun < 100; noun++) {
         for (verb = 0; verb < 100; verb++) {
-            memory = return_memory("day02.csv");
+            const aMemory memory = return_memory("day02.csv");
             intcode.pointer = 0;
             intcode.memory = memory;
             updated_memory(&intcode, noun, verb);
 
-            ic_return = 1;
+            int ic_return = 1;
             while (ic_return == 1) {
                 ic_return = opcode(&intcode);
             }
 
-            candidate = intcode.memory.contents[0];
+            const int candidate = intcode.memory.contents[0];
             if (candidate == 19690720) {
                 goto end;
             }
