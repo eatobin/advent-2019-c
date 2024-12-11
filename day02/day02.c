@@ -41,7 +41,7 @@ int main(void) {
     return 0;
 }
 
-int opcode(struct Intcode *intcode) {
+int opcode(anIntcode *intcode) {
 
     const int action = intcode->memory.contents[intcode->pointer];
     const int address1 = intcode->memory.contents[intcode->pointer + 1];
@@ -66,13 +66,13 @@ int opcode(struct Intcode *intcode) {
     }
 }
 
-void updated_memory(const struct Intcode *intcode, const int noun, const int verb) {
+void updated_memory(const anIntcode *intcode, const int noun, const int verb) {
     intcode->memory.contents[1] = noun;
     intcode->memory.contents[2] = verb;
 }
 
 int noun_verb(void) {
-    struct Intcode intcode;
+    anIntcode intcode;
 
     for (int noun = 0; noun < 100; noun++) {
         for (int verb = 0; verb < 100; verb++) {
