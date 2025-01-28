@@ -3,7 +3,7 @@
 # target: dependencies
 #   action
 
-main:
+main: main.c
 	clang -o main main.c
 
 clean:
