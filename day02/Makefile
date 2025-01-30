@@ -3,8 +3,8 @@
 # target: dependencies
 #   action
 
-all: main.c
-	clang -o main main.c
+all: day02.c
+	clang -o day02 day02.c
 
 clean:
-	rm main
+	rm day02

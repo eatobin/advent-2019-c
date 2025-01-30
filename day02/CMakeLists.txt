@@ -10,7 +10,7 @@ project(day02 LANGUAGES C CXX)
 
 add_executable(day02
         file_fns.c
-        main.c)
+        day02.c)
 
 configure_file(day02.csv
         ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
