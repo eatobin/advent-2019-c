@@ -8,4 +8,11 @@ set(CMAKE_CXX_STANDARD 11)
 
 project(day02 LANGUAGES C CXX)
 
-add_executable(main main.c)
+add_executable(day02
+        file_fns.c
+        main.c)
+
+configure_file(day02.csv
+        ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
+configure_file(test-file.csv
+        ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)

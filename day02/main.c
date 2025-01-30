@@ -21,8 +21,8 @@ int main(void) {
         ic_return = opcode(&intcode);
     }
 
-    printf("Part A answer = %d\n", intcode.memory[0]);// Part A answer = 2890696
-    printf("Part B answer = %d\n", noun_verb());      // Part B answer = 8226
+    printf("Part A answer = %d. Correct = 2890696\n", intcode.memory[0]);
+    printf("Part B answer = %d. Correct = 8226\n", noun_verb());
 
     return 0;
 }
@@ -59,7 +59,7 @@ int opcode(anIntcode *intcode) {
     }
 }
 
-void updated_memory(anIntcode *intcode, int noun, int verb) {
+void updated_memory(anIntcode *intcode, const int noun, const int verb) {
     intcode->memory[1] = noun;
     intcode->memory[2] = verb;
 }
@@ -77,7 +77,7 @@ int noun_verb(void) {
 
             const int candidate = intcode.memory[0];
             if (candidate == 19690720) {
-                return (100 * noun) + verb;
+                return 100 * noun + verb;
             }
         }
     }
