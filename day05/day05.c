@@ -13,7 +13,7 @@ int main(void) {
     anIntcode intcode = makeIntcode();
 
     printf("Part A answer = %d. Correct = 2890696\n", intcode.memory[0]);
-    printf("Part A answer = %d. Correct = 2890696\n", intcode.memory[676]);
+    printf("Part A answer = %d. Correct = 2890696\n", intcode.memory[677]);
     // printf("Part B answer = %d. Correct = 8226\n", noun_verb());
 
     return 0;
