@@ -2,6 +2,8 @@
 #include <string.h>
 
 typedef struct Intcode {
+    int input;
+    int output;
     int pointer;
     int memory[5];
 } anIntcode;
@@ -28,26 +30,26 @@ anIntcode makeIntcode(void) {
     return intcode;
 }
 
-// int opcode(anIntcode *intcode) {
-//     const int action = intcode->memory[intcode->pointer];
-//     const int address1 = intcode->memory[intcode->pointer + 1];
-//     const int address2 = intcode->memory[intcode->pointer + 2];
-//     const int address3 = intcode->memory[intcode->pointer + 3];
-//
-//     switch (action) {
-//         case 1:
-//             intcode->memory[address3] =
-//                     intcode->memory[address1] +
-//                     intcode->memory[address2];
-//             intcode->pointer += 4;
-//             return 1;
-//         case 2:
-//             intcode->memory[address3] =
-//                     intcode->memory[address1] *
-//                     intcode->memory[address2];
-//             intcode->pointer += 4;
-//             return 1;
-//         default:
-//             return 0;
-//     }
-// }
+int opcode(anIntcode *intcode) {
+    const int action = intcode->memory[intcode->pointer];
+    const int address1 = intcode->memory[intcode->pointer + 1];
+    const int address2 = intcode->memory[intcode->pointer + 2];
+    const int address3 = intcode->memory[intcode->pointer + 3];
+
+    switch (action) {
+        case 1:
+            intcode->memory[address3] =
+                    intcode->memory[address1] +
+                    intcode->memory[address2];
+            intcode->pointer += 4;
+            return 1;
+        case 2:
+            intcode->memory[address3] =
+                    intcode->memory[address1] *
+                    intcode->memory[address2];
+            intcode->pointer += 4;
+            return 1;
+        default:
+            return 0;
+    }
+}
