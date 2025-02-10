@@ -8,7 +8,10 @@ typedef struct Intcode {
     int memory[5];
 } anIntcode;
 
+typedef int *Instruction;
+
 anIntcode makeIntcode(void);
+
 int opcode(anIntcode *intcode);
 
 int main(void) {
@@ -38,6 +41,23 @@ anIntcode makeIntcode(void) {
     memcpy(intcode.memory, memoryContents, sizeof(memoryContents));
     return intcode;
 }
+
+Instruction pad5() {
+    int x[5] = {0, 1, 2, 3, 4};
+    return x;
+}
+
+// 01234
+// 01002
+// 34 - two-digit opcode,      02 == opcode 2
+//  2 - mode of 1st parameter,  0 == position mode
+//  1 - mode of 2nd parameter,  1 == immediate mode
+//  0 - mode of 3rd parameter,  0 == position mode,
+//                                   omitted due to being a leading zero
+
+// 0 1 or 2 = left-to-right position after 2 digit opcode
+// p i or r = position, immediate or relative mode
+// r or w = read or write
 
 int opcode(anIntcode *intcode) {
     const int action = intcode->memory[intcode->pointer];
