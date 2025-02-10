@@ -6,31 +6,31 @@ int main(void) {
 
     int result;
 
-    x = 7;
+    x = 54321;
     y = 10;
     // using modulo operator
     result = x % y;
     printf("%d\n", result);
 
-    x =88;
+    x =54321;
     y = 100;
     // using modulo operator
     result = x % y;
     printf("%d\n", result);
 
-    x =494;
+    x =54321;
     y = 1000;
     // using modulo operator
     result = x % y;
     printf("%d\n", result);
 
-    x =1984;
+    x =54321;
     y = 10000;
     // using modulo operator
     result = x % y;
     printf("%d\n", result);
 
-    x =56289;
+    x =54321;
     y = 100000;
     // using modulo operator
     result = x % y;
