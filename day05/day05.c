@@ -1,40 +1,34 @@
-// #include <stdio.h>
-
-// int main() {
-//     char buffer[50];
-//     int age = 30;
-//     float height = 1.75;
-//     char name[20] = "John Doe";
-
-//     int result = sprintf(buffer, "Name: %s, Age: %d, Height: %.2f", name, age, height);
-
-//     if (result >= 0) {
-//         printf("Formatted string: %s\n", buffer);
-//         printf("Number of characters written: %d\n", result);
-//     } else {
-//         printf("Error occurred during formatting.\n");
-//     }
-
-//     return 0;
-// }
-
-
 #include <stdio.h>
+#include <stdlib.h>
+
+typedef unsigned char *Instruction;
+
+Instruction pad5(const int op) {
+    unsigned char buffer[6];
+    unsigned char *results = malloc(5 * sizeof(char));
+    if (results == NULL) {
+        perror("Failed to allocate memory");
+        exit(1);
+    }
+    snprintf(buffer, 6, "%05d", op);
+    for (int i = 0; i < 5; i++) {
+        results[i] = buffer[i] - 48;
+    }
+    return results;
+}
 
 int main() {
-    char buffer[6];
-    int age = 30;
+    const int age = 99;
+    unsigned char *answer = NULL;
 
-    int result = snprintf(buffer, 6, "%05d", age);
+    answer = pad5(age);
 
-    if (result >= 0) {
-        printf("Formatted string: %s\n", buffer);
-        printf("Number of characters written: %d\n", result);
-    } else {
-        printf("Error occurred during formatting.\n");
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", answer[i]);
     }
+    free(answer);
 
-    return 0;
+    exit(0);
 }
 
 
@@ -48,7 +42,7 @@ int main() {
 //     int memory[5];
 // } anIntcode;
 
-// typedef int *Instruction;
+// typedef char *Instruction;
 
 // anIntcode makeIntcode(void);
 
@@ -56,7 +50,17 @@ int main() {
 
 
 // Instruction pad5(int op) {
-//     return &op;
+//     char buffer[6];
+//     char *results = (char *) malloc(3 * sizeof(char));
+//     if (results == NULL) {
+//         perror("Failed to allocate memory");
+//         exit(1);
+//     }
+//     snprintf(buffer, 6, "%05d", op);
+//     for (int i = 0; i < 5; i++) {
+//         results[i] = buffer[i] - 48;
+//     }
+//     return results;
 // }
 
 
