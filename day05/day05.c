@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef unsigned char *Instruction;
+typedef char *Instruction;
 
 Instruction pad5(const int op) {
-    unsigned char buffer[6];
-    unsigned char *results = malloc(5 * sizeof(char));
+    char buffer[6];
+    char *results = malloc(5 * sizeof(char));
     if (results == NULL) {
         perror("Failed to allocate memory");
         exit(1);
@@ -19,7 +19,7 @@ Instruction pad5(const int op) {
 
 int main() {
     const int age = 99;
-    unsigned char *answer = NULL;
+    char *answer = NULL;
 
     answer = pad5(age);
 
