@@ -3,29 +3,39 @@
 
 typedef char *Instruction;
 
-Instruction pad5(const int op) {
+Instruction pad5(const int op, char *instruction) {
     char buffer[6];
+    snprintf(buffer, 6, "%05d", op);
+    for (int i = 0; i < 5; i++) {
+        instruction[i] = buffer[i] - 48;
+    }
+    return instruction;
+}
+
+int main() {
+    // const int age = 99;
+    char *answer = NULL;
+
     char *results = malloc(5 * sizeof(char));
     if (results == NULL) {
         perror("Failed to allocate memory");
         exit(1);
     }
-    snprintf(buffer, 6, "%05d", op);
-    for (int i = 0; i < 5; i++) {
-        results[i] = buffer[i] - 48;
-    }
-    return results;
-}
 
-int main() {
-    const int age = 99;
-    char *answer = NULL;
-
-    answer = pad5(age);
+    answer = pad5(6789, results);
 
     for (int i = 0; i < 5; i++) {
         printf("%d ", answer[i]);
     }
+    printf("\n");
+
+    answer = pad5(541, results);
+
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", answer[i]);
+    }
+    printf("\n");
+
     free(answer);
 
     exit(0);
