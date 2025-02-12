@@ -13,30 +13,27 @@ Instruction pad5(const int op, char *instruction) {
 }
 
 int main() {
-    // const int age = 99;
-    char *answer = NULL;
-
-    char *results = malloc(5 * sizeof(char));
-    if (results == NULL) {
+    char *instruction = malloc(5 * sizeof(char));
+    if (instruction == NULL) {
         perror("Failed to allocate memory");
         exit(1);
     }
 
-    answer = pad5(6789, results);
+    instruction = pad5(6789, instruction);
 
     for (int i = 0; i < 5; i++) {
-        printf("%d ", answer[i]);
+        printf("%d ", instruction[i]);
     }
     printf("\n");
 
-    answer = pad5(541, results);
+    instruction = pad5(541, instruction);
 
     for (int i = 0; i < 5; i++) {
-        printf("%d ", answer[i]);
+        printf("%d ", instruction[i]);
     }
     printf("\n");
 
-    free(answer);
+    free(instruction);
 
     exit(0);
 }
