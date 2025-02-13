@@ -7,7 +7,7 @@ Instruction pad5(const int op, char *instruction) {
     char buffer[6];
     snprintf(buffer, 6, "%05d", op);
     for (int i = 0; i < 5; i++) {
-        instruction[i] = buffer[i] - 48;
+        instruction[i] = (char) (buffer[i] - 48);
     }
     return instruction;
 }
