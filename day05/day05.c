@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef char *Instruction;
+typedef int *Instruction;
 
-Instruction pad5(const int op, char *instruction) {
+Instruction pad5(const int op, int *instruction) {
     char buffer[6];
     snprintf(buffer, 6, "%05d", op);
     for (int i = 0; i < 5; i++) {
-        instruction[i] = (char) (buffer[i] - 48);
+        instruction[i] = buffer[i] - 48;
     }
     return instruction;
 }
 
 int main() {
-    char *instruction = malloc(5 * sizeof(char));
+    int *instruction = malloc(5 * sizeof(int));
     if (instruction == NULL) {
         perror("Failed to allocate memory");
         exit(1);
