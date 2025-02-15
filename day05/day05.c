@@ -24,6 +24,10 @@ typedef struct Intcode {
 
 typedef int *Instruction;
 
+int const offset0 = 3;
+int const offset1 = 2;
+int const offset2 = 1;
+
 anIntcode makeIntcode(void);
 Instruction pad5(int op, int *instruction);
 int opcode(anIntcode *intcode);
@@ -72,6 +76,9 @@ int main(void) {
     return 0;
 }
 
+// int zeroParam(anIntcode *icP, Instruction instruction) {
+//     return 0;
+// }
 
 // func (icP *IntCode) aParam(instruction Instruction) int {
 //     var choice int
@@ -108,9 +115,9 @@ Instruction pad5(const int op, int *instruction) {
 
 int opcode(anIntcode *intcode) {
     const int action = intcode->memory[intcode->pointer];
-    const int address1 = intcode->memory[intcode->pointer + 1];
-    const int address2 = intcode->memory[intcode->pointer + 2];
-    const int address3 = intcode->memory[intcode->pointer + 3];
+    const int address1 = intcode->memory[intcode->pointer + offset2];
+    const int address2 = intcode->memory[intcode->pointer + offset1];
+    const int address3 = intcode->memory[intcode->pointer + offset0];
 
     switch (action) {
         case 1:
