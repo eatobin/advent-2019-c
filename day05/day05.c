@@ -76,9 +76,16 @@ int main(void) {
     return 0;
 }
 
-// int zeroParam(anIntcode *icP, Instruction instruction) {
-//     return 0;
-// }
+int zeroParam(const Instruction instruction) {
+    int choice;
+    switch (instruction[0]) {
+        case 0:// 0-p-w
+            choice = 12;
+        default:
+            choice = 42;
+    }
+    return choice;
+}
 
 // func (icP *IntCode) aParam(instruction Instruction) int {
 //     var choice int
