@@ -30,7 +30,7 @@ int const offsetC = 1;
 
 anIntcode makeIntcode(void);
 int *pad5(int op, int *instruction);
-int opcode(anIntcode *intcode);
+int opcode(anIntcode *icP);
 
 int main(void) {
     anIntcode intcode = makeIntcode();
@@ -128,26 +128,26 @@ int *pad5(int op, Instruction instruction) {
     return instruction;
 }
 
-int opcode(anIntcode *intcode) {
-    switch (intcode->memory[intcode->pointer]) {
+int opcode(anIntcode *icP) {
+    switch (icP->memory[icP->pointer]) {
         case 1:
-            intcode->memory[intcode->pointer + offsetA] =
-                    intcode->memory[intcode->memory[intcode->pointer + offsetC]] +
-                    intcode->memory[intcode->memory[intcode->pointer + offsetB]];
-            intcode->pointer += 4;
+            icP->memory[icP->pointer + offsetA] =
+                    icP->memory[icP->memory[icP->pointer + offsetC]] +
+                    icP->memory[icP->memory[icP->pointer + offsetB]];
+            icP->pointer += 4;
             return 1;
         case 2:
-            intcode->memory[intcode->pointer + offsetA] =
-                    intcode->memory[intcode->memory[intcode->pointer + offsetC]] *
-                    intcode->memory[intcode->memory[intcode->pointer + offsetB]];
-            intcode->pointer += 4;
+            icP->memory[icP->pointer + offsetA] =
+                    icP->memory[icP->memory[icP->pointer + offsetC]] *
+                    icP->memory[icP->memory[icP->pointer + offsetB]];
+            icP->pointer += 4;
             return 1;
         case 3:
-            intcode->memory[intcode->memory[intcode->pointer + offsetC]] = intcode->input;
-            intcode->pointer += 2;
+            icP->memory[icP->memory[icP->pointer + offsetC]] = icP->input;
+            icP->pointer += 2;
         case 4:
-            intcode->output = intcode->memory[intcode->memory[intcode->pointer + offsetC]];
-            intcode->pointer += 2;
+            icP->output = icP->memory[icP->memory[icP->pointer + offsetC]];
+            icP->pointer += 2;
         default:
             return 0;
     }
