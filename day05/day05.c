@@ -30,7 +30,7 @@ int const offsetC = 1;
 
 anIntcode makeIntcode(void);
 int *pad5(int op, int *instruction);
-int opcode(anIntcode *icP);
+int opcode(anIntcode *icP, Instruction instruction);
 
 int main(void) {
     anIntcode intcode = makeIntcode();
@@ -42,7 +42,7 @@ int main(void) {
 
     int ic_return = 1;
     while (ic_return == 1) {
-        ic_return = opcode(&intcode);
+        ic_return = opcode(&intcode, instruction);
     }
 
     printf("Part A answer = %d. Correct = 2890696\n", intcode.memory[0]);
@@ -99,6 +99,14 @@ int bParam(const anIntcode *icP, const Instruction instruction) {
 }
 
 int cParam(const anIntcode *icP, const Instruction instruction) {
+    if (instruction[4] == 3) {
+        switch (instruction[2]) {
+            case 0:// c-p-w
+                return icP->memory[icP->pointer + offsetC];
+            default:
+                return 99;
+        }
+    }
     switch (instruction[2]) {
         case 0:// c-p-r
             return icP->memory[icP->memory[icP->pointer + offsetC]];
@@ -112,7 +120,7 @@ anIntcode makeIntcode(void) {
     const int memoryContents[5] = {3, 0, 4, 0, 99};
     // const int memoryContents[5] = {1002, 4, 3, 4, 33};
     anIntcode intcode;
-    intcode.input = 42;
+    intcode.input = 779;
     intcode.output = 0;
     intcode.pointer = 0;
     memcpy(intcode.memory, memoryContents, sizeof(memoryContents));
@@ -128,25 +136,26 @@ int *pad5(int op, Instruction instruction) {
     return instruction;
 }
 
-int opcode(anIntcode *icP) {
-    switch (icP->memory[icP->pointer]) {
+int opcode(anIntcode *icP, Instruction instruction) {
+    instruction = pad5(icP->memory[icP->pointer], instruction);
+    switch (instruction[4]) {
         case 1:
-            icP->memory[icP->pointer + offsetA] =
-                    icP->memory[icP->memory[icP->pointer + offsetC]] +
-                    icP->memory[icP->memory[icP->pointer + offsetB]];
+            icP->memory[aParam(icP, instruction)] =
+                    icP->memory[bParam(icP, instruction)] +
+                    icP->memory[cParam(icP, instruction)];
             icP->pointer += 4;
             return 1;
         case 2:
-            icP->memory[icP->pointer + offsetA] =
-                    icP->memory[icP->memory[icP->pointer + offsetC]] *
-                    icP->memory[icP->memory[icP->pointer + offsetB]];
+            icP->memory[aParam(icP, instruction)] =
+                    icP->memory[bParam(icP, instruction)] *
+                    icP->memory[cParam(icP, instruction)];
             icP->pointer += 4;
             return 1;
         case 3:
-            icP->memory[icP->memory[icP->pointer + offsetC]] = icP->input;
+            icP->memory[cParam(icP, instruction)] = icP->input;
             icP->pointer += 2;
         case 4:
-            icP->output = icP->memory[icP->memory[icP->pointer + offsetC]];
+            icP->output = icP->memory[cParam(icP, instruction)];
             icP->pointer += 2;
         default:
             return 0;
