@@ -55,7 +55,9 @@ int main(void) {
     for (int i = 0; i < 5; i++) {
         printf("%d ", instruction[i]);
     }
+
     printf("\n");
+    printf("%p\n", instruction);
 
     instruction = pad5(541, instruction);
 
@@ -63,6 +65,7 @@ int main(void) {
         printf("%d ", instruction[i]);
     }
     printf("\n");
+    printf("%p\n", instruction);
 
     instruction = pad5(8, instruction);
 
@@ -70,6 +73,7 @@ int main(void) {
         printf("%d ", instruction[i]);
     }
     printf("\n");
+    printf("%p\n", instruction);
 
     free(instruction);
 
@@ -111,7 +115,7 @@ anIntcode makeIntcode(void) {
     return intcode;
 }
 
-Instruction pad5(const int op, int *instruction) {
+Instruction pad5(int op, int *instruction) {
     char buffer[6];
     snprintf(buffer, 6, "%05d", op);
     for (int i = 0; i < 5; i++) {
