@@ -24,9 +24,9 @@ typedef struct Intcode {
 
 typedef int *Instruction;
 
-int const offset0 = 3;
-int const offset1 = 2;
-int const offset2 = 1;
+int const offsetA = 3;
+int const offsetB = 2;
+int const offsetC = 1;
 
 anIntcode makeIntcode(void);
 Instruction pad5(int op, int *instruction);
@@ -125,29 +125,24 @@ Instruction pad5(int op, int *instruction) {
 }
 
 int opcode(anIntcode *intcode) {
-    const int action = intcode->memory[intcode->pointer];
-    const int address1 = intcode->memory[intcode->pointer + offset2];
-    const int address2 = intcode->memory[intcode->pointer + offset1];
-    const int address3 = intcode->memory[intcode->pointer + offset0];
-
-    switch (action) {
+    switch (intcode->memory[intcode->pointer]) {
         case 1:
-            intcode->memory[address3] =
-                    intcode->memory[address1] +
-                    intcode->memory[address2];
+            intcode->memory[intcode->memory[intcode->pointer + offsetA]] =
+                    intcode->memory[intcode->memory[intcode->pointer + offsetC]] +
+                    intcode->memory[intcode->memory[intcode->pointer + offsetB]];
             intcode->pointer += 4;
             return 1;
         case 2:
-            intcode->memory[address3] =
-                    intcode->memory[address1] *
-                    intcode->memory[address2];
+            intcode->memory[intcode->memory[intcode->pointer + offsetA]] =
+                    intcode->memory[intcode->memory[intcode->pointer + offsetC]] *
+                    intcode->memory[intcode->memory[intcode->pointer + offsetB]];
             intcode->pointer += 4;
             return 1;
         case 3:
-            intcode->memory[address1] = intcode->input;
+            intcode->memory[intcode->memory[intcode->pointer + offsetC]] = intcode->input;
             intcode->pointer += 2;
         case 4:
-            intcode->output = intcode->memory[address1];
+            intcode->output = intcode->memory[intcode->memory[intcode->pointer + offsetC]];
             intcode->pointer += 2;
         default:
             return 0;
