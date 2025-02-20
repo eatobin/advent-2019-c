@@ -127,13 +127,13 @@ Instruction pad5(int op, int *instruction) {
 int opcode(anIntcode *intcode) {
     switch (intcode->memory[intcode->pointer]) {
         case 1:
-            intcode->memory[intcode->memory[intcode->pointer + offsetA]] =
+            intcode->memory[intcode->pointer + offsetA] =
                     intcode->memory[intcode->memory[intcode->pointer + offsetC]] +
                     intcode->memory[intcode->memory[intcode->pointer + offsetB]];
             intcode->pointer += 4;
             return 1;
         case 2:
-            intcode->memory[intcode->memory[intcode->pointer + offsetA]] =
+            intcode->memory[intcode->pointer + offsetA] =
                     intcode->memory[intcode->memory[intcode->pointer + offsetC]] *
                     intcode->memory[intcode->memory[intcode->pointer + offsetB]];
             intcode->pointer += 4;
