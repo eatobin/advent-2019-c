@@ -149,14 +149,14 @@ int opcode(anIntcode *icP, Instruction instruction) {
     switch (instruction[4]) {
         case 1:
             icP->memory[aParam(icP, instruction)] =
-                    icP->memory[bParam(icP, instruction)] +
-                    icP->memory[cParam(icP, instruction)];
+                    icP->memory[cParam(icP, instruction)] +
+                    icP->memory[bParam(icP, instruction)];
             icP->pointer += 4;
             return 1;
         case 2:
             icP->memory[aParam(icP, instruction)] =
-                    icP->memory[bParam(icP, instruction)] *
-                    icP->memory[cParam(icP, instruction)];
+                    icP->memory[cParam(icP, instruction)] *
+                    icP->memory[bParam(icP, instruction)];
             icP->pointer += 4;
             return 1;
         case 3:
