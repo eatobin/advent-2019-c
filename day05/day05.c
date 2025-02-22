@@ -29,7 +29,7 @@ int const offsetB = 2;
 int const offsetA = 3;
 
 anIntcode makeIntcode(void);
-int *pad5(int op, int *instruction);
+int *pad5(int op, Instruction instruction);
 int opcode(anIntcode *icP, Instruction instruction);
 
 int main(void) {
@@ -45,7 +45,7 @@ int main(void) {
         ic_return = opcode(&intcode, instruction);
     }
 
-    printf("Part A answer = %d. Correct = 9025675\n", intcode.output);
+    printf("\nPart A answer = %d. Correct = 9025675\n", intcode.output);
 
     free(instruction);
 
