@@ -133,6 +133,20 @@ int opcode(anIntcode *icP, Instruction instruction) {
             icP->output = cParam(icP, instruction);
             icP->pointer += 2;
             return 1;
+        case 5:
+            if (icP->memory[cParam(icP, instruction)] != 0) {
+                icP->pointer = bParam(icP, instruction);
+            } else {
+                icP->pointer += 3;
+            }
+            return 1;
+        case 6:
+            if (icP->memory[cParam(icP, instruction)] == 0) {
+                icP->pointer = bParam(icP, instruction);
+            } else {
+                icP->pointer += 3;
+            }
+            return 1;
         default:
             return 0;
     }
