@@ -22,7 +22,7 @@ typedef struct Intcode {
     int memory[678];
 } anIntcode;
 
-typedef u_char Instruction[5];
+typedef char Instruction[5];
 
 int const offsetC = 1;
 int const offsetB = 2;
@@ -30,11 +30,11 @@ int const offsetA = 3;
 
 anIntcode makeIntcodeA(void);
 anIntcode makeIntcodeB(void);
-u_char *pad5(int op, Instruction instruction);
-u_char opcode(anIntcode *icP, Instruction instruction);
+char *pad5(int op, Instruction instruction);
+char opcode(anIntcode *icP, Instruction instruction);
 
 int main(void) {
-    u_char *instruction = malloc(5 * sizeof(u_char));
+    char *instruction = malloc(5 * sizeof(char));
     if (instruction == NULL) {
         perror("Failed to allocate memory");
         exit(1);
@@ -42,7 +42,7 @@ int main(void) {
 
     anIntcode intcode = makeIntcodeA();
 
-    u_char ic_return = 1;
+    char ic_return = 1;
     while (ic_return == 1) {
         ic_return = opcode(&intcode, instruction);
     }
@@ -122,8 +122,8 @@ anIntcode makeIntcodeB(void) {
     return intcode;
 }
 
-u_char *pad5(const int op, Instruction instruction) {
-    u_char buffer[6];
+char *pad5(const int op, Instruction instruction) {
+    char buffer[6];
     snprintf(buffer, 6, "%05d", op);
     for (int i = 0; i < 5; i++) {
         instruction[i] = buffer[i] - '0';
@@ -131,7 +131,7 @@ u_char *pad5(const int op, Instruction instruction) {
     return instruction;
 }
 
-u_char opcode(anIntcode *icP, Instruction instruction) {
+char opcode(anIntcode *icP, Instruction instruction) {
     instruction = pad5(icP->memory[icP->pointer], instruction);
     switch (instruction[4]) {
         case 1:
