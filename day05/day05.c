@@ -22,8 +22,6 @@ typedef struct Intcode {
     int memory[678];
 } anIntcode;
 
-typedef int Instruction[5];
-
 int const offsetC = 1;
 int const offsetB = 2;
 int const offsetA = 3;
@@ -32,8 +30,8 @@ const int memoryContents[678] = {3, 225, 1, 225, 6, 6, 1100, 1, 238, 225, 104, 0
 
 anIntcode makeIntcodeA(void);
 anIntcode makeIntcodeB(void);
-int *pad5(int op, Instruction instruction);
-int opcode(anIntcode *icP, Instruction instruction);
+int *pad5(int op, int *instruction);
+int opcode(anIntcode *icP, int *instruction);
 
 int main(void) {
     int *instruction = malloc(5 * sizeof(int));
@@ -65,7 +63,7 @@ int main(void) {
     exit(0);
 }
 
-int aParam(const anIntcode *icP, const Instruction instruction) {
+int aParam(const anIntcode *icP, const int *instruction) {
     switch (instruction[0]) {
         case 0:// a-p-w
             return icP->memory[icP->pointer + offsetA];
@@ -74,7 +72,7 @@ int aParam(const anIntcode *icP, const Instruction instruction) {
     }
 }
 
-int bParam(const anIntcode *icP, const Instruction instruction) {
+int bParam(const anIntcode *icP, const int *instruction) {
     switch (instruction[1]) {
         case 0:// b-p-r
             return icP->memory[icP->memory[icP->pointer + offsetB]];
@@ -85,7 +83,7 @@ int bParam(const anIntcode *icP, const Instruction instruction) {
     }
 }
 
-int cParam(const anIntcode *icP, const Instruction instruction) {
+int cParam(const anIntcode *icP, const int *instruction) {
     if (instruction[4] == 3) {
         switch (instruction[2]) {
             case 0:// c-p-w
@@ -122,16 +120,16 @@ anIntcode makeIntcodeB(void) {
     return intcode;
 }
 
-int *pad5(const int op, Instruction instruction) {
+int *pad5(const int op, int *instruction) {
     char buffer[6];
     snprintf(buffer, 6, "%05d", op);
     for (int i = 0; i < 5; i++) {
-        instruction[i] = buffer[i] - '0';
+        instruction[i] = buffer[i] - 48;
     }
     return instruction;
 }
 
-int opcode(anIntcode *icP, Instruction instruction) {
+int opcode(anIntcode *icP, int *instruction) {
     instruction = pad5(icP->memory[icP->pointer], instruction);
     switch (instruction[4]) {
         case 1:
