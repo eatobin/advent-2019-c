@@ -10,25 +10,25 @@
 //     return true
 // }
 
-#include <stdbool.h>
+// #include <stdbool.h>
 #include <stdio.h>
 
-bool has_unique_elements(int *arr, int size) {
+int has_unique_elements(int *arr, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = i + 1; j < size; j++) {
             if (arr[i] == arr[j]) {
-                return false;
+                return 0;
             }
         }
     }
-    return true;
+    return 1;
 }
 
 int main() {
-    int arr1[] = {1, 2, 3, 4, 5, 5};
+    int arr1[] = {1, 2, 3, 4, 5};
     int arr2[] = {1, 2, 3, 4, 1};
 
-    if (has_unique_elements(arr1, 6)) {
+    if (has_unique_elements(arr1, 5)) {
         printf("arr1 has unique elements\n");
     } else {
         printf("arr1 does not have unique elements\n");
