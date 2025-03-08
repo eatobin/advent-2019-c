@@ -18,7 +18,7 @@
 
 void printing(char *arr[], int l) {
     for (int i = 0; i < l; i++)
-        printf("%s\n", arr[i]);
+        printf("%s - %d\n", arr[i], strcmp(arr[i], "Geeks"));
 }
 
 int main() {
