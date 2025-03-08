@@ -17,26 +17,34 @@
 // }
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-int comp(const void *a, const void *b) {
+// Method 1: Using a pointer to a pointer
+void print_strings_ptr(char **strings, int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%s\n", strings[i]);
+    }
+}
 
-    // Using strcmp() for comparing two strings
-    return strcmp(*(const char **) a, *(const char **) b);
+// Method 2: Using a 2D array
+void print_strings_arr(char strings[][50], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%s\n", strings[i]);
+    }
 }
 
 int main() {
-    const char *arr[] = {"Rahul", "Vikas", "Mukesh"};
+    // Example usage for Method 1
+    char *strings_ptr[] = {"Hello", "World", "C", "Programming"};
+    int size_ptr = sizeof(strings_ptr) / sizeof(strings_ptr[0]);
+    print_strings_ptr(strings_ptr, size_ptr);
 
-    const int n = sizeof(arr) / sizeof(arr[0]);
+    printf("\n");
 
-    // Sort the given arr
-    qsort(arr, n, sizeof(arr[0]), comp);
-
-    // Print the sorted arr
-    for (int i = 0; i < n; i++)
-        printf("%s\n", arr[i]);
+    // Example usage for Method 2
+    char strings_arr[4][50] = {"Hello", "World", "C", "Programming"};
+    int size_arr = sizeof(strings_arr) / sizeof(strings_arr[0]);
+    print_strings_arr(strings_arr, size_arr);
 
     return 0;
 }
