@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
 // int compareEm(const char *str1, const char *str2) {
 //     return strcmp(str1, str2);
@@ -16,17 +16,27 @@
 //     return 1;
 // }
 
-void printing(char *arr[], int l) {
-    for (int i = 0; i < l; i++)
-        printf("%s - %d\n", arr[i], strcmp(arr[i], "Geeks"));
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int comp(const void *a, const void *b) {
+
+    // Using strcmp() for comparing two strings
+    return strcmp(*(const char **) a, *(const char **) b);
 }
 
 int main() {
+    const char *arr[] = {"Rahul", "Vikas", "Mukesh"};
 
-    // Array of pointers to strings
-    char *arr[] = {"Geek", "Geeks", "Geekfor"};
+    const int n = sizeof(arr) / sizeof(arr[0]);
 
-    printing(arr, 3);
+    // Sort the given arr
+    qsort(arr, n, sizeof(arr[0]), comp);
+
+    // Print the sorted arr
+    for (int i = 0; i < n; i++)
+        printf("%s\n", arr[i]);
 
     return 0;
 }
