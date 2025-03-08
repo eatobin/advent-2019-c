@@ -11,34 +11,58 @@
 // }
 
 // #include <stdbool.h>
-#include <stdio.h>
+// #include <stdio.h>
 
-int has_unique_elements(int *arr, int size) {
-    for (int i = 0; i < size; i++) {
-        for (int j = i + 1; j < size; j++) {
-            if (arr[i] == arr[j]) {
-                return 0;
-            }
-        }
-    }
-    return 1;
+// int has_unique_elements(int *arr, int size) {
+//     for (int i = 0; i < size; i++) {
+//         for (int j = i + 1; j < size; j++) {
+//             if (arr[i] == arr[j]) {
+//                 return 0;
+//             }
+//         }
+//     }
+//     return 1;
+// }
+//
+// int main() {
+//     int arr1[] = {1, 2, 3, 4, 5};
+//     int arr2[] = {1, 2, 3, 4, 1};
+//
+//     if (has_unique_elements(arr1, 5)) {
+//         printf("arr1 has unique elements\n");
+//     } else {
+//         printf("arr1 does not have unique elements\n");
+//     }
+//
+//     if (has_unique_elements(arr2, 5)) {
+//         printf("arr2 has unique elements\n");
+//     } else {
+//         printf("arr2 does not have unique elements\n");
+//     }
+//
+//     return 0;
+// }
+
+
+#include <stdio.h>
+#include <string.h>
+
+int compareEm(const char *str1, const char *str2) {
+    return strcmp(str1, str2);
 }
 
 int main() {
-    int arr1[] = {1, 2, 3, 4, 5};
-    int arr2[] = {1, 2, 3, 4, 1};
+    char str1[] = "apple";
+    char str2[] = "banana";
+    char str3[] = "apple";
 
-    if (has_unique_elements(arr1, 5)) {
-        printf("arr1 has unique elements\n");
-    } else {
-        printf("arr1 does not have unique elements\n");
-    }
+    // int result1 = strcmp(str1, str2);// Comparing "apple" and "banana"
+    // int result2 = strcmp(str1, str3);// Comparing "apple" and "apple"
+    // int result3 = strcmp(str2, str1);// Comparing "banana" and "apple"
 
-    if (has_unique_elements(arr2, 5)) {
-        printf("arr2 has unique elements\n");
-    } else {
-        printf("arr2 does not have unique elements\n");
-    }
+    printf("strcmp(\"%s\", \"%s\") = %d\n", str1, str2, compareEm(str1, str2));
+    printf("strcmp(\"%s\", \"%s\") = %d\n", str1, str3, compareEm(str1, str3));
+    printf("strcmp(\"%s\", \"%s\") = %d\n", str2, str1, compareEm(str2, str1));
 
     return 0;
 }
