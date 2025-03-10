@@ -19,36 +19,55 @@
 #include <stdio.h>
 #include <string.h>
 
-// Method 1: Using a pointer to a pointer
-void print_strings_ptr(char **strings, int size) {
-    for (int i = 0; i < size; i++) {
-        printf("%s\n", strings[i]);
-    }
-}
+// // Method 1: Using a pointer to a pointer
+// void print_strings_ptr(char **strings, int size) {
+//     for (int i = 0; i < size; i++) {
+//         printf("%s\n", strings[i]);
+//     }
+// }
+//
+// // Method 2: Using a 2D array
+// void print_strings_arr(char strings[][50], int size) {
+//     for (int i = 0; i < size; i++) {
+//         printf("%s\n", strings[i]);
+//     }
+// }
+//
+// int main() {
+//     // Example usage for Method 1
+//     char *strings_ptr[] = {"Hello", "World", "C", "Programming"};
+//     int size_ptr = sizeof(strings_ptr) / sizeof(strings_ptr[0]);
+//     print_strings_ptr(strings_ptr, size_ptr);
+//
+//     printf("\n");
+//
+//     // Example usage for Method 2
+//     char strings_arr[4][50] = {"Hello", "World", "C", "Programming"};
+//     int size_arr = sizeof(strings_arr) / sizeof(strings_arr[0]);
+//     print_strings_arr(strings_arr, size_arr);
+//
+//     return 0;
+// }
 
-// Method 2: Using a 2D array
-void print_strings_arr(char strings[][50], int size) {
-    for (int i = 0; i < size; i++) {
-        printf("%s\n", strings[i]);
-    }
-}
+#include <stdio.h>
 
 int main() {
-    // Example usage for Method 1
-    char *strings_ptr[] = {"Hello", "World", "C", "Programming"};
-    int size_ptr = sizeof(strings_ptr) / sizeof(strings_ptr[0]);
-    print_strings_ptr(strings_ptr, size_ptr);
 
-    printf("\n");
+    // A variable
+    int var = 10;
 
-    // Example usage for Method 2
-    char strings_arr[4][50] = {"Hello", "World", "C", "Programming"};
-    int size_arr = sizeof(strings_arr) / sizeof(strings_arr[0]);
-    print_strings_arr(strings_arr, size_arr);
+    // Pointer to int
+    int *ptr1 = &var;
+
+    // Pointer to pointer (double pointer)
+    int **ptr2 = &ptr1;
+
+    printf("var: %d\n", var);
+    printf("*ptr1: %d\n", *ptr1);
+    printf("**ptr2: %d", **ptr2);
 
     return 0;
 }
-
 
 // int main() {
 //     char *arr1[5] = {"x", "aa", "rr", "ab", "c"};
