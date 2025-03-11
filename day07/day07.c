@@ -1,73 +1,35 @@
-// #include <stdio.h>
-// #include <string.h>
-
-// int compareEm(const char *str1, const char *str2) {
-//     return strcmp(str1, str2);
-// }
-//
-// int has_unique_elements(char arr[5], const int size) {
-//     for (int i = 0; i < size; i++) {
-//         for (int j = i + 1; j < size; j++) {
-//             if (compareEm(&arr[i], &arr[j]) == 0) {
-//                 return 0;
-//             }
-//         }
-//     }
-//     return 1;
-// }
-
 #include <stdio.h>
-#include <string.h>
-
-// // Method 1: Using a pointer to a pointer
-// void print_strings_ptr(char **strings, int size) {
-//     for (int i = 0; i < size; i++) {
-//         printf("%s\n", strings[i]);
-//     }
-// }
-//
-// // Method 2: Using a 2D array
-// void print_strings_arr(char strings[][50], int size) {
-//     for (int i = 0; i < size; i++) {
-//         printf("%s\n", strings[i]);
-//     }
-// }
-//
-// int main() {
-//     // Example usage for Method 1
-//     char *strings_ptr[] = {"Hello", "World", "C", "Programming"};
-//     int size_ptr = sizeof(strings_ptr) / sizeof(strings_ptr[0]);
-//     print_strings_ptr(strings_ptr, size_ptr);
-//
-//     printf("\n");
-//
-//     // Example usage for Method 2
-//     char strings_arr[4][50] = {"Hello", "World", "C", "Programming"};
-//     int size_arr = sizeof(strings_arr) / sizeof(strings_arr[0]);
-//     print_strings_arr(strings_arr, size_arr);
-//
-//     return 0;
-// }
-
-#include <stdio.h>
+#include <stdlib.h>
 
 int main() {
+    const int rows = 3;
+    const int cols = 4;
+    int row, col, count = 0;
 
-    // A variable
-    int var = 10;
+    int **arr = malloc(rows * sizeof(int *));
+    for (row = 0; row < rows; row++)
+        arr[row] = (int *) malloc(cols * sizeof(int));
 
-    // Pointer to int
-    int *ptr1 = &var;
+    // Note that arr[i][j] is same as *(*(arr+i)+j)
+    for (row = 0; row < rows; row++)
+        for (col = 0; col < cols; col++)
+            arr[row][col] = ++count;// OR *(*(arr+i)+j) = ++count
 
-    // Pointer to pointer (double pointer)
-    int **ptr2 = &ptr1;
+    for (row = 0; row < rows; row++)
+        for (col = 0; col < cols; col++)
+            printf("%d ", arr[row][col]);
 
-    printf("var: %d\n", var);
-    printf("*ptr1: %d\n", *ptr1);
-    printf("**ptr2: %d", **ptr2);
+    /* Code for further processing and free the
+       dynamically allocated memory */
+
+    for (row = 0; row < rows; row++)
+        free(arr[row]);
+
+    free(arr);
 
     return 0;
 }
+
 
 // int main() {
 //     char *arr1[5] = {"x", "aa", "rr", "ab", "c"};
@@ -89,8 +51,8 @@ int main() {
 // }
 
 
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
 
 // int main() {
