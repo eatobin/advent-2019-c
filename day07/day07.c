@@ -30,6 +30,16 @@ int main() {
     return 0;
 }
 
+int has_unique_elements(const int *arr, const int size) {
+    for (int i = 0; i < size; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (arr[i] == arr[j]) {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
 
 // int main() {
 //     char *arr1[5] = {"x", "aa", "rr", "ab", "c"};
