@@ -1,45 +1,24 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-int main() {
-    const int rows = 3;
-    const int cols = 4;
-    int row, col, count = 0;
-
-    int **arr = malloc(rows * sizeof(int *));
-    for (row = 0; row < rows; row++)
-        arr[row] = (int *) malloc(cols * sizeof(int));
-
-    // Note that arr[i][j] is same as *(*(arr+i)+j)
-    for (row = 0; row < rows; row++)
-        for (col = 0; col < cols; col++)
-            arr[row][col] = ++count;// OR *(*(arr+i)+j) = ++count
-
-    for (row = 0; row < rows; row++)
-        for (col = 0; col < cols; col++)
-            printf("%d ", arr[row][col]);
-
-    /* Code for further processing and free the
-       dynamically allocated memory */
-
-    for (row = 0; row < rows; row++)
-        free(arr[row]);
-
-    free(arr);
-
-    return 0;
-}
-
-int has_unique_elements(const int *arr, const int size) {
-    for (int i = 0; i < size; i++) {
-        for (int j = i + 1; j < size; j++) {
-            if (arr[i] == arr[j]) {
-                return 0;
-            }
-        }
-    }
-    return 1;
-}
+// // Output the k! permutations of A in which the first k elements are permuted in all ways.
+// // To get all permutations of A, use k := length of A.
+// //
+// // If, k > length of A, will try to access A out of bounds.
+// // If k <= 0 there will be no output (empty array has no permutations)
+// procedure permutations(k : integer, A : array of any):
+//     if k = 1 then
+//         output(A)
+//     else
+//         // permutations with last element fixed
+//         permutations(k - 1, A)
+//         // permutations with last element swapped out
+//         for i := 0; i < k-1; i += 1 do
+//             if k is even then
+//                 swap(A[i], A[k-1])
+//             else
+//                 swap(A[0], A[k-1])
+//             end if
+//             permutations(k - 1, A)
+//         end for
+//     end if
 
 // int main() {
 //     char *arr1[5] = {"x", "aa", "rr", "ab", "c"};
