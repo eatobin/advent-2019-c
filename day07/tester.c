@@ -14,7 +14,7 @@ void permutations(const int k, int A[]) {
         }
         printf("\n");
     } else {
-        for (int i = 0; i < k - 1; ++i) {
+        for (int i = 0; i < k - 1; i++) {
             permutations(k - 1, A);
             if (k % 2 == 0) {
                 swap(&A[i], &A[k - 1]);
