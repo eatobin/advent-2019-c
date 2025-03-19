@@ -10,3 +10,4 @@ project(day07 LANGUAGES C CXX)
 
 add_executable(theCPP day07.cpp)
 add_executable(theC main.c)
+add_executable(theTest tester.c)
