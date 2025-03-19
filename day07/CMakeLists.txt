@@ -4,10 +4,8 @@ set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)
 
 set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 11)
 
 project(day07 LANGUAGES C CXX)
 
-add_executable(theCPP day07.cpp)
-add_executable(theC main.c)
-add_executable(theTest tester.c)
+add_executable(day07 day07.c)
