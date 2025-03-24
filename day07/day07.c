@@ -18,8 +18,11 @@
 typedef struct Intcode {
     int input;
     int output;
+    int phase;
     int pointer;
     int memory[678];
+    int isStopped;
+    int doesRecur;
 } anIntcode;
 
 int const offsetC = 1;
@@ -146,8 +149,11 @@ anIntcode makeIntcodeA(void) {
     anIntcode intcode;
     intcode.input = 1;
     intcode.output = 0;
+    intcode.phase = -1;
     intcode.pointer = 0;
     memcpy(intcode.memory, memoryContents, sizeof(memoryContents));
+    intcode.isStopped = 0;
+    intcode.doesRecur = 1;
     return intcode;
 }
 
@@ -155,8 +161,11 @@ anIntcode makeIntcodeB(void) {
     anIntcode intcode;
     intcode.input = 5;
     intcode.output = 0;
+    intcode.phase = -1;
     intcode.pointer = 0;
     memcpy(intcode.memory, memoryContents, sizeof(memoryContents));
+    intcode.isStopped = 0;
+    intcode.doesRecur = 1;
     return intcode;
 }
 
