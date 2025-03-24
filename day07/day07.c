@@ -179,59 +179,68 @@ int *pad5(const int op, int *instruction) {
 }
 
 int opcode(anIntcode *icP, int *instruction) {
-    instruction = pad5(icP->memory[icP->pointer], instruction);
-    switch (instruction[4]) {
-        case 1:
-            icP->memory[aParam(icP, instruction)] =
-                    cParam(icP, instruction) +
-                    bParam(icP, instruction);
-            icP->pointer += 4;
-            return 1;
-        case 2:
-            icP->memory[aParam(icP, instruction)] =
-                    cParam(icP, instruction) *
-                    bParam(icP, instruction);
-            icP->pointer += 4;
-            return 1;
-        case 3:
-            icP->memory[cParam(icP, instruction)] = icP->input;
-            icP->pointer += 2;
-            return 1;
-        case 4:
-            icP->output = cParam(icP, instruction);
-            icP->pointer += 2;
-            return 1;
-        case 5:
-            if (cParam(icP, instruction) != 0) {
-                icP->pointer = bParam(icP, instruction);
-            } else {
-                icP->pointer += 3;
-            }
-            return 1;
-        case 6:
-            if (cParam(icP, instruction) == 0) {
-                icP->pointer = bParam(icP, instruction);
-            } else {
-                icP->pointer += 3;
-            }
-            return 1;
-        case 7:
-            if (cParam(icP, instruction) < bParam(icP, instruction)) {
-                icP->memory[aParam(icP, instruction)] = 1;
-            } else {
-                icP->memory[aParam(icP, instruction)] = 0;
-            }
-            icP->pointer += 4;
-            return 1;
-        case 8:
-            if (cParam(icP, instruction) == bParam(icP, instruction)) {
-                icP->memory[aParam(icP, instruction)] = 1;
-            } else {
-                icP->memory[aParam(icP, instruction)] = 0;
-            }
-            icP->pointer += 4;
-            return 1;
-        default:
+    if (icP->isStopped == 1) {
+        return 0;
+    } else {
+        instruction = pad5(icP->memory[icP->pointer], instruction);
+        if (instruction[3] == 9) {
+            icP->isStopped = 1;
             return 0;
+        } else {
+            switch (instruction[4]) {
+                case 1:
+                    icP->memory[aParam(icP, instruction)] =
+                            cParam(icP, instruction) +
+                            bParam(icP, instruction);
+                    icP->pointer += 4;
+                    return 1;
+                case 2:
+                    icP->memory[aParam(icP, instruction)] =
+                            cParam(icP, instruction) *
+                            bParam(icP, instruction);
+                    icP->pointer += 4;
+                    return 1;
+                case 3:
+                    icP->memory[cParam(icP, instruction)] = icP->input;
+                    icP->pointer += 2;
+                    return 1;
+                case 4:
+                    icP->output = cParam(icP, instruction);
+                    icP->pointer += 2;
+                    return 1;
+                case 5:
+                    if (cParam(icP, instruction) != 0) {
+                        icP->pointer = bParam(icP, instruction);
+                    } else {
+                        icP->pointer += 3;
+                    }
+                    return 1;
+                case 6:
+                    if (cParam(icP, instruction) == 0) {
+                        icP->pointer = bParam(icP, instruction);
+                    } else {
+                        icP->pointer += 3;
+                    }
+                    return 1;
+                case 7:
+                    if (cParam(icP, instruction) < bParam(icP, instruction)) {
+                        icP->memory[aParam(icP, instruction)] = 1;
+                    } else {
+                        icP->memory[aParam(icP, instruction)] = 0;
+                    }
+                    icP->pointer += 4;
+                    return 1;
+                case 8:
+                    if (cParam(icP, instruction) == bParam(icP, instruction)) {
+                        icP->memory[aParam(icP, instruction)] = 1;
+                    } else {
+                        icP->memory[aParam(icP, instruction)] = 0;
+                    }
+                    icP->pointer += 4;
+                    return 1;
+                default:
+                    return 0;
+            }
+        }
     }
 }
