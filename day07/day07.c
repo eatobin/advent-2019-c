@@ -201,7 +201,15 @@ int opcode(anIntcode *icP, int *instruction) {
                     icP->pointer += 4;
                     return 1;
                 case 3:
-                    icP->memory[cParam(icP, instruction)] = icP->input;
+                    if (icP->phase == -1) {
+                        icP->memory[cParam(icP, instruction)] = icP->input;
+                    } else {
+                        if (icP->pointer == 0) {
+                            icP->memory[cParam(icP, instruction)] = icP->phase;
+                        } else {
+                            icP->memory[cParam(icP, instruction)] = icP->input;
+                        }
+                    }
                     icP->pointer += 2;
                     return 1;
                 case 4:
