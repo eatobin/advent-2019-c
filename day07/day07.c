@@ -47,8 +47,8 @@ int main(void) {
     const int len = sizeof(phases) / sizeof(phases[0]);
     permutations(len, phases);
 
-    printf("phase[0][0]: %d\n", candidates[0][0]);
-    printf("phase[119][4]: %d\n", candidates[119][4]);
+    printf("phase[0][4]: %d\n", candidates[0][4]);
+    printf("phase[119][0]: %d\n", candidates[119][0]);
 
     int *instruction = malloc(5 * sizeof(int));
     if (instruction == NULL) {
@@ -212,10 +212,16 @@ int opcode(anIntcode *icP, int *instruction) {
                     }
                     icP->pointer += 2;
                     return 1;
-                case 4:
+                case 4: {
+                    if (icP->doesRecur == 1) {
+                        icP->output = cParam(icP, instruction);
+                        icP->pointer += 2;
+                        return 1;
+                    }
                     icP->output = cParam(icP, instruction);
                     icP->pointer += 2;
-                    return 1;
+                    return 0;
+                }
                 case 5:
                     if (cParam(icP, instruction) != 0) {
                         icP->pointer = bParam(icP, instruction);
