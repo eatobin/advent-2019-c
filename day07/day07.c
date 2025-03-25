@@ -43,16 +43,24 @@ int opcode(anIntcode *icP, int *instruction);
 int candidates[120][5];
 int currentPerm = 0;
 
-int toy[4] = {11, 22, 33, 44};
+int src[4] = {11, 22, 33, 44};
+
 typedef struct Point {
     int x;
     int y;
-    // int *j;
-    int j[4];
+    int *king;
 } tony;
 
-// tony p1 = {10, 20, memoryConstant};
-tony p1 = {10, 20, memoryConstant};
+tony makeTony(void) {
+    tony aTony;
+    aTony.king = NULL;
+    aTony.x = 200;
+    aTony.y = 400;
+    memcpy(aTony.king, src, sizeof(src));
+    return aTony;
+}
+
+tony p1 = {10, 20, src};
 
 // int pass(void) {
 //     anIntcode *icpA = &makeICPa();
