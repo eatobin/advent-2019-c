@@ -47,11 +47,12 @@ int toy[4] = {11, 22, 33, 44};
 typedef struct Point {
     int x;
     int y;
-    int *n;
+    // int *j;
+    int j[4];
 } tony;
 
+// tony p1 = {10, 20, memoryConstant};
 tony p1 = {10, 20, memoryConstant};
-
 
 // int pass(void) {
 //     anIntcode *icpA = &makeICPa();
