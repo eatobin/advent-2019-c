@@ -36,7 +36,6 @@ void swap(int *x, int *y);
 void permutations(int k, int A[]);
 anIntcode makeIntcodeA(void);
 anIntcode makeIntcodeB(void);
-
 int *pad5(int op, int *instruction);
 int opcode(anIntcode *icP, int *instruction);
 
