@@ -36,38 +36,12 @@ void swap(int *x, int *y);
 void permutations(int k, int A[]);
 anIntcode makeIntcodeA(void);
 anIntcode makeIntcodeB(void);
-anIntcode makeICPa(void);
+
 int *pad5(int op, int *instruction);
 int opcode(anIntcode *icP, int *instruction);
 
 int candidates[120][5];
 int currentPerm = 0;
-
-int src[4] = {11, 22, 33, 44};
-
-typedef struct Point {
-    int x;
-    int y;
-    int king[4];
-} tony;
-
-tony makeTony(void) {
-    tony aTony;
-    // aTony.king = NULL;
-    aTony.x = 200;
-    aTony.y = 400;
-    // aTony.king = memcpy(aTony.king, src, sizeof(src));
-    aTony.king = {1,2,3,4};
-    return aTony;
-}
-
-// tony p1 = {10, 20, src};
-
-
-// int pass(void) {
-//     anIntcode *icpA = &makeICPa();
-//     return 0;
-// }
 
 
 int main(void) {
@@ -92,10 +66,6 @@ int main(void) {
     }
 
     printf("\nPart A answer = %d. Correct = 9025675\n", intcode.output);
-
-    intcode = makeIntcodeB();
-    tony p1 = makeTony();
-    printf("%d %d %d\n", p1.x, p1.y, p1.king[0]);
 
     ic_return = 1;
     while (ic_return == 1) {
@@ -188,18 +158,6 @@ anIntcode makeIntcodeA(void) {
 }
 
 anIntcode makeIntcodeB(void) {
-    anIntcode intcode;
-    intcode.input = 5;
-    intcode.output = 0;
-    intcode.phase = -1;
-    intcode.pointer = 0;
-    memcpy(intcode.memory, memoryConstant, sizeof(memoryConstant));
-    intcode.isStopped = 0;
-    intcode.doesRecur = 1;
-    return intcode;
-}
-
-anIntcode makeICPa(void) {
     anIntcode intcode;
     intcode.input = 5;
     intcode.output = 0;
