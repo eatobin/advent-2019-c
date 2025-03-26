@@ -43,7 +43,7 @@ int candidates[120][5];
 int currentPerm = 0;
 
 
-void pass(int *candidate, int *instruction) {
+int pass(int *candidate, int *instruction) {
     anIntcode icpA;
     icpA.input = 0;
     icpA.output = 0;
@@ -86,17 +86,35 @@ void pass(int *candidate, int *instruction) {
         icReturn = opcode(&icpC, instruction);
     }
 
-    printf("%d\n", icpA.memory[0]);
-    printf("%d\n", icpA.phase);
-    printf("%d\n", icpA.doesRecur);
+    anIntcode icpD;
+    icpD.input = icpC.output;
+    icpD.output = 0;
+    icpD.phase = candidate[3];
+    icpD.pointer = 0;
+    memcpy(icpD.memory, memoryConstant, sizeof(memoryConstant));
+    icpD.isStopped = 0;
+    icpD.doesRecur = 1;
 
-    printf("%d\n", icpB.memory[0]);
-    printf("%d\n", icpB.phase);
-    printf("%d\n", icpB.doesRecur);
+    icReturn = 1;
+    while (icReturn == 1) {
+        icReturn = opcode(&icpD, instruction);
+    }
 
-    icpA.memory[0] = 66;
-    printf("%d\n", icpA.memory[0]);
-    printf("%d\n", icpB.memory[0]);
+    anIntcode icpE;
+    icpE.input = icpD.output;
+    icpE.output = 0;
+    icpE.phase = candidate[4];
+    icpE.pointer = 0;
+    memcpy(icpE.memory, memoryConstant, sizeof(memoryConstant));
+    icpE.isStopped = 0;
+    icpE.doesRecur = 1;
+
+    icReturn = 1;
+    while (icReturn == 1) {
+        icReturn = opcode(&icpE, instruction);
+    }
+
+    return icpE.output;
 }
 
 
@@ -113,8 +131,8 @@ int main(void) {
         perror("Failed to allocate memory");
         exit(1);
     }
-    int cand[] = {88, 99};
-    pass(cand, instruction);
+    int hot[] = {11, 22, 33, 44, 55};
+    pass(hot, instruction);
 
 
     // anIntcode intcode = makeIntcodeA();
