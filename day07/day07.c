@@ -72,6 +72,20 @@ void pass(int *candidate, int *instruction) {
         icReturn = opcode(&icpB, instruction);
     }
 
+    anIntcode icpC;
+    icpC.input = icpB.output;
+    icpC.output = 0;
+    icpC.phase = candidate[2];
+    icpC.pointer = 0;
+    memcpy(icpC.memory, memoryConstant, sizeof(memoryConstant));
+    icpC.isStopped = 0;
+    icpC.doesRecur = 1;
+
+    icReturn = 1;
+    while (icReturn == 1) {
+        icReturn = opcode(&icpC, instruction);
+    }
+
     printf("%d\n", icpA.memory[0]);
     printf("%d\n", icpA.phase);
     printf("%d\n", icpA.doesRecur);
