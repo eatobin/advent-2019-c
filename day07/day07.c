@@ -52,6 +52,23 @@ void pass(int candidate[]) {
             icpA.isStopped = 0,
             icpA.doesRecur = 1};
     memcpy(icpA.memory, memoryConstant, sizeof(memoryConstant));
+
+    anIntcode icpB = {
+            icpB.input = 0,
+            icpB.output = 0,
+            icpB.phase = candidate[1],
+            icpB.pointer = 0,
+            icpB.isStopped = 0,
+            icpB.doesRecur = 1};
+    memcpy(icpB.memory, memoryConstant, sizeof(memoryConstant));
+
+    printf("%d\n", icpA.memory[0]);
+    printf("%d\n", icpA.phase);
+    printf("%d\n", icpA.doesRecur);
+
+    printf("%d\n", icpB.memory[0]);
+    printf("%d\n", icpB.phase);
+    printf("%d\n", icpB.doesRecur);
 }
 
 
@@ -68,22 +85,25 @@ int main(void) {
         perror("Failed to allocate memory");
         exit(1);
     }
+    int cand[] = {88, 99};
+    pass(cand);
 
-    anIntcode intcode = makeIntcodeA();
 
-    int ic_return = 1;
-    while (ic_return == 1) {
-        ic_return = opcode(&intcode, instruction);
-    }
+    // anIntcode intcode = makeIntcodeA();
 
-    printf("\nPart A answer = %d. Correct = 9025675\n", intcode.output);
+    // int ic_return = 1;
+    // while (ic_return == 1) {
+    //     ic_return = opcode(&intcode, instruction);
+    // }
 
-    ic_return = 1;
-    while (ic_return == 1) {
-        ic_return = opcode(&intcode, instruction);
-    }
+    // printf("\nPart A answer = %d. Correct = 9025675\n", intcode.output);
 
-    printf("Part B answer = %d. Correct = 11981754\n\n", intcode.output);
+    // ic_return = 1;
+    // while (ic_return == 1) {
+    //     ic_return = opcode(&intcode, instruction);
+    // }
+
+    // printf("Part B answer = %d. Correct = 11981754\n\n", intcode.output);
 
     free(instruction);
 
