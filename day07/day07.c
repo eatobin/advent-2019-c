@@ -43,6 +43,18 @@ int candidates[120][5];
 int currentPerm = 0;
 
 
+void pass(int candidate[]) {
+    anIntcode icpA = {
+            icpA.input = 0,
+            icpA.output = 0,
+            icpA.phase = candidate[0],
+            icpA.pointer = 0,
+            icpA.isStopped = 0,
+            icpA.doesRecur = 1};
+    memcpy(icpA.memory, memoryConstant, sizeof(memoryConstant));
+}
+
+
 int main(void) {
     int phases[] = {0, 1, 2, 3, 4};
     const int len = sizeof(phases) / sizeof(phases[0]);
