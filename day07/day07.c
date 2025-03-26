@@ -43,7 +43,7 @@ int candidates[120][5];
 int currentPerm = 0;
 
 
-void pass(int candidate[]) {
+void pass(int *candidate, int *instruction) {
     anIntcode icpA;
     icpA.input = 0;
     icpA.output = 0;
@@ -53,14 +53,24 @@ void pass(int candidate[]) {
     icpA.isStopped = 0;
     icpA.doesRecur = 1;
 
+    int icReturn = 1;
+    while (icReturn == 1) {
+        icReturn = opcode(&icpA, instruction);
+    }
+
     anIntcode icpB;
-    icpB.input = 0;
+    icpB.input = icpA.output;
     icpB.output = 0;
     icpB.phase = candidate[1];
     icpB.pointer = 0;
     memcpy(icpB.memory, memoryConstant, sizeof(memoryConstant));
     icpB.isStopped = 0;
     icpB.doesRecur = 1;
+
+    icReturn = 1;
+    while (icReturn == 1) {
+        icReturn = opcode(&icpB, instruction);
+    }
 
     printf("%d\n", icpA.memory[0]);
     printf("%d\n", icpA.phase);
@@ -73,7 +83,6 @@ void pass(int candidate[]) {
     icpA.memory[0] = 66;
     printf("%d\n", icpA.memory[0]);
     printf("%d\n", icpB.memory[0]);
-
 }
 
 
@@ -91,7 +100,7 @@ int main(void) {
         exit(1);
     }
     int cand[] = {88, 99};
-    pass(cand);
+    pass(cand, instruction);
 
 
     // anIntcode intcode = makeIntcodeA();
