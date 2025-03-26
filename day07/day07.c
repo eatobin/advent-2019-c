@@ -44,23 +44,23 @@ int currentPerm = 0;
 
 
 void pass(int candidate[]) {
-    anIntcode icpA = {
-            icpA.input = 0,
-            icpA.output = 0,
-            icpA.phase = candidate[0],
-            icpA.pointer = 0,
-            icpA.isStopped = 0,
-            icpA.doesRecur = 1};
+    anIntcode icpA;
+    icpA.input = 0;
+    icpA.output = 0;
+    icpA.phase = candidate[0];
+    icpA.pointer = 0;
     memcpy(icpA.memory, memoryConstant, sizeof(memoryConstant));
+    icpA.isStopped = 0;
+    icpA.doesRecur = 1;
 
-    anIntcode icpB = {
-            icpB.input = 0,
-            icpB.output = 0,
-            icpB.phase = candidate[1],
-            icpB.pointer = 0,
-            icpB.isStopped = 0,
-            icpB.doesRecur = 1};
+    anIntcode icpB;
+    icpB.input = 0;
+    icpB.output = 0;
+    icpB.phase = candidate[1];
+    icpB.pointer = 0;
     memcpy(icpB.memory, memoryConstant, sizeof(memoryConstant));
+    icpB.isStopped = 0;
+    icpB.doesRecur = 1;
 
     printf("%d\n", icpA.memory[0]);
     printf("%d\n", icpA.phase);
@@ -69,6 +69,11 @@ void pass(int candidate[]) {
     printf("%d\n", icpB.memory[0]);
     printf("%d\n", icpB.phase);
     printf("%d\n", icpB.doesRecur);
+
+    icpA.memory[0] = 66;
+    printf("%d\n", icpA.memory[0]);
+    printf("%d\n", icpB.memory[0]);
+
 }
 
 
