@@ -29,7 +29,7 @@ int const offsetC = 1;
 int const offsetB = 2;
 int const offsetA = 3;
 
-int memoryConstant[678] = {3, 225, 1, 225, 6, 6, 1100, 1, 238, 225, 104, 0, 1102, 79, 14, 225, 1101, 17, 42, 225, 2, 74, 69, 224, 1001, 224, -5733, 224, 4, 224, 1002, 223, 8, 223, 101, 4, 224, 224, 1, 223, 224, 223, 1002, 191, 83, 224, 1001, 224, -2407, 224, 4, 224, 102, 8, 223, 223, 101, 2, 224, 224, 1, 223, 224, 223, 1101, 18, 64, 225, 1102, 63, 22, 225, 1101, 31, 91, 225, 1001, 65, 26, 224, 101, -44, 224, 224, 4, 224, 102, 8, 223, 223, 101, 3, 224, 224, 1, 224, 223, 223, 101, 78, 13, 224, 101, -157, 224, 224, 4, 224, 1002, 223, 8, 223, 1001, 224, 3, 224, 1, 224, 223, 223, 102, 87, 187, 224, 101, -4698, 224, 224, 4, 224, 102, 8, 223, 223, 1001, 224, 4, 224, 1, 223, 224, 223, 1102, 79, 85, 224, 101, -6715, 224, 224, 4, 224, 1002, 223, 8, 223, 1001, 224, 2, 224, 1, 224, 223, 223, 1101, 43, 46, 224, 101, -89, 224, 224, 4, 224, 1002, 223, 8, 223, 101, 1, 224, 224, 1, 223, 224, 223, 1101, 54, 12, 225, 1102, 29, 54, 225, 1, 17, 217, 224, 101, -37, 224, 224, 4, 224, 102, 8, 223, 223, 1001, 224, 3, 224, 1, 223, 224, 223, 1102, 20, 53, 225, 4, 223, 99, 0, 0, 0, 677, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1105, 0, 99999, 1105, 227, 247, 1105, 1, 99999, 1005, 227, 99999, 1005, 0, 256, 1105, 1, 99999, 1106, 227, 99999, 1106, 0, 265, 1105, 1, 99999, 1006, 0, 99999, 1006, 227, 274, 1105, 1, 99999, 1105, 1, 280, 1105, 1, 99999, 1, 225, 225, 225, 1101, 294, 0, 0, 105, 1, 0, 1105, 1, 99999, 1106, 0, 300, 1105, 1, 99999, 1, 225, 225, 225, 1101, 314, 0, 0, 106, 0, 0, 1105, 1, 99999, 107, 226, 226, 224, 1002, 223, 2, 223, 1006, 224, 329, 101, 1, 223, 223, 1108, 677, 226, 224, 1002, 223, 2, 223, 1006, 224, 344, 101, 1, 223, 223, 7, 677, 226, 224, 102, 2, 223, 223, 1006, 224, 359, 101, 1, 223, 223, 108, 226, 226, 224, 1002, 223, 2, 223, 1005, 224, 374, 101, 1, 223, 223, 8, 226, 677, 224, 1002, 223, 2, 223, 1006, 224, 389, 101, 1, 223, 223, 1108, 226, 226, 224, 102, 2, 223, 223, 1006, 224, 404, 101, 1, 223, 223, 1007, 677, 677, 224, 1002, 223, 2, 223, 1006, 224, 419, 101, 1, 223, 223, 8, 677, 677, 224, 1002, 223, 2, 223, 1005, 224, 434, 1001, 223, 1, 223, 1008, 226, 226, 224, 102, 2, 223, 223, 1005, 224, 449, 1001, 223, 1, 223, 1008, 226, 677, 224, 102, 2, 223, 223, 1006, 224, 464, 101, 1, 223, 223, 1107, 677, 677, 224, 102, 2, 223, 223, 1006, 224, 479, 101, 1, 223, 223, 107, 677, 677, 224, 1002, 223, 2, 223, 1005, 224, 494, 1001, 223, 1, 223, 1107, 226, 677, 224, 1002, 223, 2, 223, 1005, 224, 509, 101, 1, 223, 223, 1108, 226, 677, 224, 102, 2, 223, 223, 1006, 224, 524, 101, 1, 223, 223, 7, 226, 226, 224, 1002, 223, 2, 223, 1005, 224, 539, 101, 1, 223, 223, 108, 677, 677, 224, 1002, 223, 2, 223, 1005, 224, 554, 101, 1, 223, 223, 8, 677, 226, 224, 1002, 223, 2, 223, 1005, 224, 569, 1001, 223, 1, 223, 1008, 677, 677, 224, 102, 2, 223, 223, 1006, 224, 584, 101, 1, 223, 223, 107, 226, 677, 224, 102, 2, 223, 223, 1005, 224, 599, 1001, 223, 1, 223, 7, 226, 677, 224, 102, 2, 223, 223, 1005, 224, 614, 101, 1, 223, 223, 1007, 226, 226, 224, 1002, 223, 2, 223, 1005, 224, 629, 101, 1, 223, 223, 1107, 677, 226, 224, 1002, 223, 2, 223, 1006, 224, 644, 101, 1, 223, 223, 108, 226, 677, 224, 102, 2, 223, 223, 1006, 224, 659, 101, 1, 223, 223, 1007, 677, 226, 224, 102, 2, 223, 223, 1006, 224, 674, 101, 1, 223, 223, 4, 223, 99, 226};
+int memoryConstant[523] = {3, 8, 1001, 8, 10, 8, 105, 1, 0, 0, 21, 38, 55, 72, 93, 118, 199, 280, 361, 442, 99999, 3, 9, 1001, 9, 2, 9, 1002, 9, 5, 9, 101, 4, 9, 9, 4, 9, 99, 3, 9, 1002, 9, 3, 9, 1001, 9, 5, 9, 1002, 9, 4, 9, 4, 9, 99, 3, 9, 101, 4, 9, 9, 1002, 9, 3, 9, 1001, 9, 4, 9, 4, 9, 99, 3, 9, 1002, 9, 4, 9, 1001, 9, 4, 9, 102, 5, 9, 9, 1001, 9, 4, 9, 4, 9, 99, 3, 9, 101, 3, 9, 9, 1002, 9, 3, 9, 1001, 9, 3, 9, 102, 5, 9, 9, 101, 4, 9, 9, 4, 9, 99, 3, 9, 101, 1, 9, 9, 4, 9, 3, 9, 1001, 9, 1, 9, 4, 9, 3, 9, 102, 2, 9, 9, 4, 9, 3, 9, 101, 2, 9, 9, 4, 9, 3, 9, 1001, 9, 1, 9, 4, 9, 3, 9, 102, 2, 9, 9, 4, 9, 3, 9, 1001, 9, 1, 9, 4, 9, 3, 9, 102, 2, 9, 9, 4, 9, 3, 9, 102, 2, 9, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 99, 3, 9, 1001, 9, 1, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 3, 9, 1001, 9, 2, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 3, 9, 101, 2, 9, 9, 4, 9, 3, 9, 102, 2, 9, 9, 4, 9, 3, 9, 102, 2, 9, 9, 4, 9, 3, 9, 102, 2, 9, 9, 4, 9, 3, 9, 101, 1, 9, 9, 4, 9, 3, 9, 101, 1, 9, 9, 4, 9, 99, 3, 9, 101, 2, 9, 9, 4, 9, 3, 9, 101, 1, 9, 9, 4, 9, 3, 9, 101, 1, 9, 9, 4, 9, 3, 9, 102, 2, 9, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 3, 9, 101, 2, 9, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 3, 9, 1001, 9, 2, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 3, 9, 101, 1, 9, 9, 4, 9, 99, 3, 9, 1001, 9, 1, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 3, 9, 1001, 9, 1, 9, 4, 9, 3, 9, 1001, 9, 2, 9, 4, 9, 3, 9, 102, 2, 9, 9, 4, 9, 3, 9, 1001, 9, 1, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 3, 9, 1001, 9, 2, 9, 4, 9, 3, 9, 1001, 9, 2, 9, 4, 9, 3, 9, 102, 2, 9, 9, 4, 9, 99, 3, 9, 101, 1, 9, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 3, 9, 101, 2, 9, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 3, 9, 101, 2, 9, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 3, 9, 101, 1, 9, 9, 4, 9, 3, 9, 101, 2, 9, 9, 4, 9, 3, 9, 1002, 9, 2, 9, 4, 9, 3, 9, 101, 1, 9, 9, 4, 9, 99};
 
 void addAPerm(int perm[5]);
 void swap(int *x, int *y);
@@ -38,116 +38,38 @@ anIntcode makeIntcodeA(void);
 anIntcode makeIntcodeB(void);
 int *pad5(int op, int *instruction);
 int opcode(anIntcode *icP, int *instruction);
+int pass(const int *candidate, int *instruction);
 
 int candidates[120][5];
 int currentPerm = 0;
 
 
-int pass(int *candidate, int *instruction) {
-    anIntcode icpA;
-    icpA.input = 0;
-    icpA.output = 0;
-    icpA.phase = candidate[0];
-    icpA.pointer = 0;
-    memcpy(icpA.memory, memoryConstant, sizeof(memoryConstant));
-    icpA.isStopped = 0;
-    icpA.doesRecur = 1;
-
-    int icReturn = 1;
-    while (icReturn == 1) {
-        icReturn = opcode(&icpA, instruction);
+int *passes(int *instruction) {
+    static int vcm[120];
+    for (int i = 0; i < 120; i++) {
+        vcm[i] = pass(candidates[i], instruction);
     }
-
-    anIntcode icpB;
-    icpB.input = icpA.output;
-    icpB.output = 0;
-    icpB.phase = candidate[1];
-    icpB.pointer = 0;
-    memcpy(icpB.memory, memoryConstant, sizeof(memoryConstant));
-    icpB.isStopped = 0;
-    icpB.doesRecur = 1;
-
-    icReturn = 1;
-    while (icReturn == 1) {
-        icReturn = opcode(&icpB, instruction);
-    }
-
-    anIntcode icpC;
-    icpC.input = icpB.output;
-    icpC.output = 0;
-    icpC.phase = candidate[2];
-    icpC.pointer = 0;
-    memcpy(icpC.memory, memoryConstant, sizeof(memoryConstant));
-    icpC.isStopped = 0;
-    icpC.doesRecur = 1;
-
-    icReturn = 1;
-    while (icReturn == 1) {
-        icReturn = opcode(&icpC, instruction);
-    }
-
-    anIntcode icpD;
-    icpD.input = icpC.output;
-    icpD.output = 0;
-    icpD.phase = candidate[3];
-    icpD.pointer = 0;
-    memcpy(icpD.memory, memoryConstant, sizeof(memoryConstant));
-    icpD.isStopped = 0;
-    icpD.doesRecur = 1;
-
-    icReturn = 1;
-    while (icReturn == 1) {
-        icReturn = opcode(&icpD, instruction);
-    }
-
-    anIntcode icpE;
-    icpE.input = icpD.output;
-    icpE.output = 0;
-    icpE.phase = candidate[4];
-    icpE.pointer = 0;
-    memcpy(icpE.memory, memoryConstant, sizeof(memoryConstant));
-    icpE.isStopped = 0;
-    icpE.doesRecur = 1;
-
-    icReturn = 1;
-    while (icReturn == 1) {
-        icReturn = opcode(&icpE, instruction);
-    }
-
-    return icpE.output;
+    return vcm;
 }
 
+int comp(const void *a, const void *b) {
+    return (*(int *) a - *(int *) b);
+}
 
 int main(void) {
     int phases[] = {0, 1, 2, 3, 4};
     const int len = sizeof(phases) / sizeof(phases[0]);
     permutations(len, phases);
 
-    printf("phase[0][4]: %d\n", candidates[0][4]);
-    printf("phase[119][0]: %d\n", candidates[119][0]);
-
     int *instruction = malloc(5 * sizeof(int));
     if (instruction == NULL) {
         perror("Failed to allocate memory");
         exit(1);
     }
-    int hot[] = {11, 22, 33, 44, 55};
-    pass(hot, instruction);
 
-
-    // anIntcode intcode = makeIntcodeA();
-
-    // int ic_return = 1;
-    // while (ic_return == 1) {
-    //     ic_return = opcode(&intcode, instruction);
-    // }
-
-    // printf("\nPart A answer = %d. Correct = 9025675\n", intcode.output);
-
-    // ic_return = 1;
-    // while (ic_return == 1) {
-    //     ic_return = opcode(&intcode, instruction);
-    // }
+    int *answer = passes(instruction);
+    qsort(answer, 120, sizeof(int), comp);
+    printf("Part A answer = %d. Correct = 368584\n", answer[119]);
 
     // printf("Part B answer = %d. Correct = 11981754\n\n", intcode.output);
 
@@ -167,7 +89,7 @@ void swap(int *x, int *y) {
     *y = temp;
 }
 
-void permutations(const int k, int A[]) {
+void permutations(const int k, int A[]) {// NOLINT(*-no-recursion)
     if (k == 1) {
         addAPerm(A);
     } else {
@@ -220,30 +142,6 @@ int cParam(const anIntcode *icP, const int *instruction) {
         default:
             return 99;
     }
-}
-
-anIntcode makeIntcodeA(void) {
-    anIntcode intcode;
-    intcode.input = 1;
-    intcode.output = 0;
-    intcode.phase = -1;
-    intcode.pointer = 0;
-    memcpy(intcode.memory, memoryConstant, sizeof(memoryConstant));
-    intcode.isStopped = 0;
-    intcode.doesRecur = 1;
-    return intcode;
-}
-
-anIntcode makeIntcodeB(void) {
-    anIntcode intcode;
-    intcode.input = 5;
-    intcode.output = 0;
-    intcode.phase = -1;
-    intcode.pointer = 0;
-    memcpy(intcode.memory, memoryConstant, sizeof(memoryConstant));
-    intcode.isStopped = 0;
-    intcode.doesRecur = 1;
-    return intcode;
 }
 
 int *pad5(const int op, int *instruction) {
@@ -332,4 +230,78 @@ int opcode(anIntcode *icP, int *instruction) {
         default:
             return 0;
     }
+}
+
+int pass(const int *candidate, int *instruction) {
+    anIntcode icpA;
+    icpA.input = 0;
+    icpA.output = 0;
+    icpA.phase = candidate[0];
+    icpA.pointer = 0;
+    memcpy(icpA.memory, memoryConstant, sizeof(memoryConstant));
+    icpA.isStopped = 0;
+    icpA.doesRecur = 1;
+
+    int icReturn = 1;
+    while (icReturn == 1) {
+        icReturn = opcode(&icpA, instruction);
+    }
+
+    anIntcode icpB;
+    icpB.input = icpA.output;
+    icpB.output = 0;
+    icpB.phase = candidate[1];
+    icpB.pointer = 0;
+    memcpy(icpB.memory, memoryConstant, sizeof(memoryConstant));
+    icpB.isStopped = 0;
+    icpB.doesRecur = 1;
+
+    icReturn = 1;
+    while (icReturn == 1) {
+        icReturn = opcode(&icpB, instruction);
+    }
+
+    anIntcode icpC;
+    icpC.input = icpB.output;
+    icpC.output = 0;
+    icpC.phase = candidate[2];
+    icpC.pointer = 0;
+    memcpy(icpC.memory, memoryConstant, sizeof(memoryConstant));
+    icpC.isStopped = 0;
+    icpC.doesRecur = 1;
+
+    icReturn = 1;
+    while (icReturn == 1) {
+        icReturn = opcode(&icpC, instruction);
+    }
+
+    anIntcode icpD;
+    icpD.input = icpC.output;
+    icpD.output = 0;
+    icpD.phase = candidate[3];
+    icpD.pointer = 0;
+    memcpy(icpD.memory, memoryConstant, sizeof(memoryConstant));
+    icpD.isStopped = 0;
+    icpD.doesRecur = 1;
+
+    icReturn = 1;
+    while (icReturn == 1) {
+        icReturn = opcode(&icpD, instruction);
+    }
+
+    anIntcode icpE;
+    icpE.input = icpD.output;
+    icpE.output = 0;
+    icpE.phase = candidate[4];
+    icpE.pointer = 0;
+    memcpy(icpE.memory, memoryConstant, sizeof(memoryConstant));
+    icpE.isStopped = 0;
+    icpE.doesRecur = 1;
+
+    icReturn = 1;
+    while (icReturn == 1) {
+        icReturn = opcode(&icpE, instruction);
+    }
+
+    return icpE.output;
 }
