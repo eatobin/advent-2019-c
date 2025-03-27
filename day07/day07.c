@@ -20,7 +20,7 @@ typedef struct Intcode {
     int output;
     int phase;
     int pointer;
-    int memory[678];
+    int memory[523];
     int isStopped;
     int doesRecur;
 } anIntcode;
