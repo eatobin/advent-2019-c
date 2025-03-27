@@ -39,22 +39,11 @@ anIntcode makeIntcodeB(void);
 int *pad5(int op, int *instruction);
 int opcode(anIntcode *icP, int *instruction);
 int pass(const int *candidate, int *instruction);
+int *passes(int *instruction);
+int comp(const void *a, const void *b);
 
 int candidates[120][5];
 int currentPerm = 0;
-
-
-int *passes(int *instruction) {
-    static int vcm[120];
-    for (int i = 0; i < 120; i++) {
-        vcm[i] = pass(candidates[i], instruction);
-    }
-    return vcm;
-}
-
-int comp(const void *a, const void *b) {
-    return (*(int *) a - *(int *) b);
-}
 
 int main(void) {
     int phases[] = {0, 1, 2, 3, 4};
@@ -304,4 +293,16 @@ int pass(const int *candidate, int *instruction) {
     }
 
     return icpE.output;
+}
+
+int *passes(int *instruction) {
+    static int vcm[120];
+    for (int i = 0; i < 120; i++) {
+        vcm[i] = pass(candidates[i], instruction);
+    }
+    return vcm;
+}
+
+int comp(const void *a, const void *b) {
+    return *(int *) a - *(int *) b;
 }
