@@ -304,3 +304,84 @@ int *passes(int *instruction) {
 int comp(const void *a, const void *b) {
     return *(int *) a - *(int *) b;
 }
+
+int pass2(const int *candidate, int *instruction) {
+    int eOutput = 0;
+    int allStopped = 0;
+    anIntcode icpA;
+    icpA.input = 0;
+    icpA.output = 0;
+    icpA.phase = candidate[0];
+    icpA.pointer = 0;
+    memcpy(icpA.memory, memoryConstant, sizeof(memoryConstant));
+    icpA.isStopped = 0;
+    icpA.doesRecur = 0;
+
+    anIntcode icpB;
+    icpB.input = icpA.output;
+    icpB.output = 0;
+    icpB.phase = candidate[1];
+    icpB.pointer = 0;
+    memcpy(icpB.memory, memoryConstant, sizeof(memoryConstant));
+    icpB.isStopped = 0;
+    icpB.doesRecur = 0;
+
+    anIntcode icpC;
+    icpC.input = icpB.output;
+    icpC.output = 0;
+    icpC.phase = candidate[2];
+    icpC.pointer = 0;
+    memcpy(icpC.memory, memoryConstant, sizeof(memoryConstant));
+    icpC.isStopped = 0;
+    icpC.doesRecur = 0;
+
+    anIntcode icpD;
+    icpD.input = icpC.output;
+    icpD.output = 0;
+    icpD.phase = candidate[3];
+    icpD.pointer = 0;
+    memcpy(icpD.memory, memoryConstant, sizeof(memoryConstant));
+    icpD.isStopped = 0;
+    icpD.doesRecur = 0;
+
+    anIntcode icpE;
+    icpE.input = icpD.output;
+    icpE.output = 0;
+    icpE.phase = candidate[4];
+    icpE.pointer = 0;
+    memcpy(icpE.memory, memoryConstant, sizeof(memoryConstant));
+    icpE.isStopped = 0;
+    icpE.doesRecur = 0;
+
+    while (allStopped == 0) {
+        int icReturn = 1;
+        while (icReturn == 1) {
+            icReturn = opcode(&icpA, instruction);
+        }
+        icpB.input = icpA.output;
+        icReturn = 1;
+        while (icReturn == 1) {
+            icReturn = opcode(&icpB, instruction);
+        }
+        icpC.input = icpB.output;
+        icReturn = 1;
+        while (icReturn == 1) {
+            icReturn = opcode(&icpC, instruction);
+        }
+        icpD.input = icpC.output;
+        icReturn = 1;
+        while (icReturn == 1) {
+            icReturn = opcode(&icpD, instruction);
+        }
+        icpE.input = icpD.output;
+        icReturn = 1;
+        while (icReturn == 1) {
+            icReturn = opcode(&icpE, instruction);
+        }
+
+        icpA.input = icpE.output;
+        eOutput = icpE.output;
+        allStopped = icpE.isStopped;
+    }
+    return eOutput;
+}
