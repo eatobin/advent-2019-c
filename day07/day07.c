@@ -37,10 +37,13 @@ void permutations(int k, int A[]);
 int *pad5(int op, int *instruction);
 int opcode(anIntcode *icP, int *instruction);
 int pass(const int *candidate, int *instruction);
+int pass2(const int *candidate, int *instruction);
 int *passes(int *instruction);
+int *passes2(int *instruction);
 int comp(const void *a, const void *b);
 
 int candidates[120][5];
+int candidates2[120][5];
 int currentPerm = 0;
 
 int main(void) {
@@ -58,7 +61,15 @@ int main(void) {
     qsort(answer, 120, sizeof(int), comp);
     printf("Part A answer = %d. Correct = 368584\n", answer[119]);
 
-    // printf("Part B answer = %d. Correct = 11981754\n\n", intcode.output);
+    int phases2[] = {5, 6, 7, 8, 9};
+    currentPerm = 0;
+    permutations(len, phases2);
+    for (int i = 0; i < 5; ++i) {
+        instruction[0] = 0;
+    }
+    answer = passes2(instruction);
+    qsort(answer, 120, sizeof(int), comp);
+    printf("Part B answer = %d. Correct = 35993240\n", answer[119]);
 
     free(instruction);
 
@@ -308,6 +319,7 @@ int comp(const void *a, const void *b) {
 int pass2(const int *candidate, int *instruction) {
     int eOutput = 0;
     int allStopped = 0;
+
     anIntcode icpA;
     icpA.input = 0;
     icpA.output = 0;
@@ -378,10 +390,18 @@ int pass2(const int *candidate, int *instruction) {
         while (icReturn == 1) {
             icReturn = opcode(&icpE, instruction);
         }
-
         icpA.input = icpE.output;
+
         eOutput = icpE.output;
         allStopped = icpE.isStopped;
     }
     return eOutput;
+}
+
+int *passes2(int *instruction) {
+    static int vcm[120];
+    for (int i = 0; i < 120; i++) {
+        vcm[i] = pass2(candidates[i], instruction);
+    }
+    return vcm;
 }
