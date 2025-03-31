@@ -48,13 +48,15 @@ int currentPerm = 0;
 
 int main(void) {
     int phases[] = {0, 1, 2, 3, 4};
-    const int len = sizeof(phases) / sizeof(phases[0]);
-    permutations(len, phases);
+    permutations(5, phases);
 
     int *instruction = malloc(5 * sizeof(int));
     if (instruction == NULL) {
         perror("Failed to allocate memory");
         exit(1);
+    }
+    for (int i = 0; i < 5; ++i) {
+        instruction[i] = 0;
     }
 
     int *answer = passes(instruction);
@@ -63,9 +65,9 @@ int main(void) {
 
     int phases2[] = {5, 6, 7, 8, 9};
     currentPerm = 0;
-    permutations(len, phases2);
+    permutations(5, phases2);
     for (int i = 0; i < 5; ++i) {
-        instruction[0] = 0;
+        instruction[i] = 0;
     }
     answer = passes2(instruction);
     qsort(answer, 120, sizeof(int), comp);
